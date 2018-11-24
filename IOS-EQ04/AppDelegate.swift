@@ -9,6 +9,8 @@
 import UIKit
 import Firebase
 import IQKeyboardManagerSwift
+//import FirebaseFirestore
+import UserNotifications
 
 
 @UIApplicationMain
@@ -18,10 +20,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+
+        UIApplication.shared.statusBarStyle = .lightContent
         FirebaseApp.configure()
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.enableAutoToolbar = false
-        Thread.sleep(forTimeInterval: 1)
+        UIApplication.shared.statusBarView?.backgroundColor = UIColor(hex:"F89934")
+        
+        let center = UNUserNotificationCenter.current()
+        // Request permission to display alerts and play sounds.
+        center.requestAuthorization(options: [.alert, .sound, .badge])
+        { (granted, error) in
+            // Enable or disable features based on authorization.
+            print("granted")
+        }
+//        Thread.sleep(forTimeInterval: 1)
         // Override point for customization after application launch.
         return true
     }

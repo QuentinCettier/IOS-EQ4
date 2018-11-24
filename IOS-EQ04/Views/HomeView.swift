@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class HomeView: UIView{
 
@@ -14,7 +15,7 @@ class HomeView: UIView{
         let lbl = UILabel()
         
         lbl.frame = (CGRect(x: 12, y: 8, width: 100, height: 50))
-        lbl.text = people.name
+        lbl.text = Auth.auth().currentUser?.displayName
         lbl.textColor = .red
         lbl.numberOfLines = 0
         lbl.backgroundColor = UIColor(hex: "080808")
@@ -25,7 +26,7 @@ class HomeView: UIView{
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+    
         //Add all view's items here
         self.addSubview(label)
         setupViewConstraint()

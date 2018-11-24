@@ -9,6 +9,7 @@ target 'IOS-EQ04' do
 
 pod 'Firebase/Core'
 pod 'Firebase/Auth'
+pod 'Firebase/Firestore'
 pod 'IQKeyboardManagerSwift'
 
 end

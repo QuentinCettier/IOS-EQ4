@@ -7,10 +7,10 @@
 //
 
 import UIKit
+import FirebaseAuth
+import UserNotifications
 
 class WarningViewController: UIViewController {
-
-    
     
     let titlelabel: UILabel = {
         var lbl = UILabel()
@@ -46,8 +46,6 @@ class WarningViewController: UIViewController {
         return lbl
     }()
     
-    
-    
     let imageView : UIImageView = {
         var img = UIImageView()
         img = UIImageView(frame:CGRect(x:10, y:50, width:189, height:180));
@@ -76,8 +74,30 @@ class WarningViewController: UIViewController {
     }()
     
     override func viewDidLoad() {
+    
         super.viewDidLoad()
 
+//        let center = UNUserNotificationCenter.current()
+//        // Request permission to display alerts and play sounds.
+//        center.requestAuthorization(options: [.alert, .sound])
+//        { (granted, error) in
+//            // Enable or disable features based on authorization.
+//        }
+
+//        Create a notification
+        let content = UNMutableNotificationContent()
+
+        content.title = "CC Raphael"
+        content.body = "c bien le cours à l'HETIC"
+        content.sound = UNNotificationSound.default
+
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+
+        let request  = UNNotificationRequest(identifier: "efefn", content: content, trigger: trigger)
+
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+
+        
         view.addSubview(titlelabel)
         view.addSubview(imageView)
         view.addSubview(getStartedButton)
@@ -93,6 +113,19 @@ class WarningViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if let user = Auth.auth().currentUser {
+            let myStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let HomeController = myStoryboard.instantiateViewController(withIdentifier: "HomeController")
+            self.present(HomeController, animated: false, completion: nil)
+        }
+    }
 
     @objc func buttonAction(sender: UIButton!) {
         let myStoryboard = UIStoryboard(name: "Main", bundle: nil)

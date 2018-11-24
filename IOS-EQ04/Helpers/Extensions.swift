@@ -43,3 +43,12 @@ extension UIViewController {
         view.endEditing(true)
     }
 }
+
+extension UIApplication {
+    
+    var statusBarView: UIView? {
+        return value(forKey: "statusBar") as? UIView
+    }
+    
+}
+

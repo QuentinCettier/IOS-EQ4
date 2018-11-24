@@ -11,7 +11,6 @@
 		3A78A89521973EBC00FABB19 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A78A89421973EBC00FABB19 /* AppDelegate.swift */; };
 		3A78A89721973EBC00FABB19 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A78A89621973EBC00FABB19 /* ViewController.swift */; };
 		3A78A89A21973EBC00FABB19 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A78A89821973EBC00FABB19 /* Main.storyboard */; };
-		3A78A89C21973EC000FABB19 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A78A89B21973EC000FABB19 /* Assets.xcassets */; };
 		3A78A89F21973EC000FABB19 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A78A89D21973EC000FABB19 /* LaunchScreen.storyboard */; };
 		3A78A8AE21973F6500FABB19 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A78A8AD21973F6500FABB19 /* HomeController.swift */; };
 		3A78A8B02197401100FABB19 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A78A8AF2197401100FABB19 /* HomeView.swift */; };
@@ -24,6 +23,11 @@
 		3A78A8C6219B130100FABB19 /* SF-Pro-Text-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3A78A8C5219B130000FABB19 /* SF-Pro-Text-Medium.otf */; };
 		3A78A8C8219C0C3500FABB19 /* SF-Pro-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3A78A8C7219C0C3500FABB19 /* SF-Pro-Text-Regular.otf */; };
 		3A78A8D0219C5A2200FABB19 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A78A8CF219C5A2200FABB19 /* LoginController.swift */; };
+		3AD7759A21A0CC8D00078A00 /* SignupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD7759921A0CC8D00078A00 /* SignupController.swift */; };
+		3AD7759C21A4184500078A00 /* AddDrinkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD7759B21A4184500078A00 /* AddDrinkController.swift */; };
+		3AD7759E21A6B33A00078A00 /* DrinkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD7759D21A6B33A00078A00 /* DrinkTableViewCell.swift */; };
+		3AD775A021A6ED5A00078A00 /* Drink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD7759F21A6ED5800078A00 /* Drink.swift */; };
+		3AFF4CCA21A7FEBE007F9DBB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3AFF4CC921A7FEBE007F9DBB /* Assets.xcassets */; };
 		67E34B978539A4CA6B12A210 /* Pods_IOS_EQ04.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97936D173A49DC10A3D0A763 /* Pods_IOS_EQ04.framework */; };
 /* End PBXBuildFile section */
 
@@ -34,7 +38,6 @@
 		3A78A89421973EBC00FABB19 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A78A89621973EBC00FABB19 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3A78A89921973EBC00FABB19 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		3A78A89B21973EC000FABB19 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3A78A89E21973EC000FABB19 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3A78A8A021973EC000FABB19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A78A8AD21973F6500FABB19 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
@@ -49,6 +52,11 @@
 		3A78A8C5219B130000FABB19 /* SF-Pro-Text-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Medium.otf"; sourceTree = "<group>"; };
 		3A78A8C7219C0C3500FABB19 /* SF-Pro-Text-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Regular.otf"; sourceTree = "<group>"; };
 		3A78A8CF219C5A2200FABB19 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		3AD7759921A0CC8D00078A00 /* SignupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupController.swift; sourceTree = "<group>"; };
+		3AD7759B21A4184500078A00 /* AddDrinkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDrinkController.swift; sourceTree = "<group>"; };
+		3AD7759D21A6B33A00078A00 /* DrinkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkTableViewCell.swift; sourceTree = "<group>"; };
+		3AD7759F21A6ED5800078A00 /* Drink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drink.swift; sourceTree = "<group>"; };
+		3AFF4CC921A7FEBE007F9DBB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3B698146C5CB88BE1C4282D4 /* Pods-IOS-EQ04.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IOS-EQ04.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IOS-EQ04/Pods-IOS-EQ04.debug.xcconfig"; sourceTree = "<group>"; };
 		97936D173A49DC10A3D0A763 /* Pods_IOS_EQ04.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IOS_EQ04.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -87,6 +95,7 @@
 		3A78A89321973EBC00FABB19 /* IOS-EQ04 */ = {
 			isa = PBXGroup;
 			children = (
+				3AFF4CC921A7FEBE007F9DBB /* Assets.xcassets */,
 				3A78A8C1219AD1E700FABB19 /* Ressources */,
 				3A78A8B12198970B00FABB19 /* Helpers */,
 				3A78A8A921973F0800FABB19 /* Models */,
@@ -96,7 +105,6 @@
 				3A78A89421973EBC00FABB19 /* AppDelegate.swift */,
 				3A78A89621973EBC00FABB19 /* ViewController.swift */,
 				3A78A89821973EBC00FABB19 /* Main.storyboard */,
-				3A78A89B21973EC000FABB19 /* Assets.xcassets */,
 				3A78A89D21973EC000FABB19 /* LaunchScreen.storyboard */,
 				3A706CD1219C639900A3EA20 /* GoogleService-Info.plist */,
 				3A78A8A021973EC000FABB19 /* Info.plist */,
@@ -108,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				3A78A8B62198994900FABB19 /* PeopleModel.swift */,
+				3AD7759F21A6ED5800078A00 /* Drink.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -119,6 +128,8 @@
 				3A78A8BA219A3C6C00FABB19 /* SliderHomeController.swift */,
 				3A78A8BC219ACAD700FABB19 /* WarningViewController.swift */,
 				3A78A8CF219C5A2200FABB19 /* LoginController.swift */,
+				3AD7759921A0CC8D00078A00 /* SignupController.swift */,
+				3AD7759B21A4184500078A00 /* AddDrinkController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -127,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				3A78A8AF2197401100FABB19 /* HomeView.swift */,
+				3AD7759D21A6B33A00078A00 /* DrinkTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -245,8 +257,8 @@
 				3A78A8C8219C0C3500FABB19 /* SF-Pro-Text-Regular.otf in Resources */,
 				3A78A89F21973EC000FABB19 /* LaunchScreen.storyboard in Resources */,
 				3A78A8C4219AD22600FABB19 /* Poppins-Medium.ttf in Resources */,
-				3A78A89C21973EC000FABB19 /* Assets.xcassets in Resources */,
 				3A78A8C6219B130100FABB19 /* SF-Pro-Text-Medium.otf in Resources */,
+				3AFF4CCA21A7FEBE007F9DBB /* Assets.xcassets in Resources */,
 				3A78A89A21973EBC00FABB19 /* Main.storyboard in Resources */,
 				3A706CD2219C639900A3EA20 /* GoogleService-Info.plist in Resources */,
 			);
@@ -264,18 +276,34 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-IOS-EQ04/Pods-IOS-EQ04-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-RxLibrary/RxLibrary.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxLibrary.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -312,15 +340,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AD7759E21A6B33A00078A00 /* DrinkTableViewCell.swift in Sources */,
 				3A78A8BD219ACAD700FABB19 /* WarningViewController.swift in Sources */,
 				3A78A8B32198972500FABB19 /* Extensions.swift in Sources */,
 				3A78A89721973EBC00FABB19 /* ViewController.swift in Sources */,
 				3A78A8B02197401100FABB19 /* HomeView.swift in Sources */,
+				3AD7759A21A0CC8D00078A00 /* SignupController.swift in Sources */,
 				3A78A89521973EBC00FABB19 /* AppDelegate.swift in Sources */,
 				3A78A8B92198996200FABB19 /* PeopleViewModel.swift in Sources */,
 				3A78A8BB219A3C6C00FABB19 /* SliderHomeController.swift in Sources */,
+				3AD7759C21A4184500078A00 /* AddDrinkController.swift in Sources */,
 				3A78A8B72198994900FABB19 /* PeopleModel.swift in Sources */,
 				3A78A8AE21973F6500FABB19 /* HomeController.swift in Sources */,
+				3AD775A021A6ED5A00078A00 /* Drink.swift in Sources */,
 				3A78A8D0219C5A2200FABB19 /* LoginController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

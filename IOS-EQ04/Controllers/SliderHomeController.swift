@@ -53,9 +53,7 @@ class SliderHomeController: UIViewController, UIScrollViewDelegate {
         btn.backgroundColor = UIColor(hex: "FFFFFF")
         btn.layer.cornerRadius = 15
         btn.setTitleColor(UIColor(hex: "F89934"), for: .normal)
-        
-        
-        //        btn.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+        btn.addTarget(self, action: #selector(SignupAction), for: .touchUpInside)
         
         return btn
     }()
@@ -142,14 +140,28 @@ class SliderHomeController: UIViewController, UIScrollViewDelegate {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if let user = Auth.auth().currentUser {
+            let myStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let HomeController = myStoryboard.instantiateViewController(withIdentifier: "HomeController")
+            self.present(HomeController, animated: false, completion: nil)
+        }
+    }
+    
     func setupPageControl() {
         pageControl.pageIndicatorTintColor = UIColor(hex: "D5D5D5")
         pageControl.currentPageIndicatorTintColor = UIColor(hex: "FF9200")
     }
+    
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let pageNumber = scrollView.contentOffset.x / scrollView.frame.size.width
         pageControl.currentPage = Int(pageNumber)
-        
     }
     
     private func setupTitleLabel() {
@@ -186,5 +198,12 @@ class SliderHomeController: UIViewController, UIScrollViewDelegate {
         let LoginController = myStoryboard.instantiateViewController(withIdentifier: "LoginController")
         self.present(LoginController, animated: true, completion: nil)
     }
+    
+    @objc func SignupAction(sender: UIButton!) {
+        let myStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let SignupController = myStoryboard.instantiateViewController(withIdentifier: "SignupController")
+        self.present(SignupController, animated: true, completion: nil)
+    }
+    
     
 }

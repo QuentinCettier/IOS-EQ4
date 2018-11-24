@@ -12,13 +12,19 @@ import FirebaseAuth
 
 class LoginController: UIViewController {
     
+    
     let navigationBar: UINavigationBar = {
         
         let screenSize: CGRect = UIScreen.main.bounds
         let bar = UINavigationBar(frame: CGRect(x:0, y:20, width:screenSize.width, height: 44))
+        bar.barTintColor = UIColor(hex: "F89934")
+        bar.isTranslucent = false
         let navItem = UINavigationItem(title: "Login")
-        let backButton: UIBarButtonItem = UIBarButtonItem(title: "Back", style: UIBarButtonItem.Style.bordered, target: self, action: nil)
+        bar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(hex: "FFFFFF")]
+        let backButton: UIBarButtonItem = UIBarButtonItem(title: "Back", style: UIBarButtonItem.Style.bordered, target: self, action: #selector(handledismiss))
         navItem.leftBarButtonItem = backButton
+        backButton.tintColor = UIColor(hex: "FFFFFF")
+        
         bar.setItems([navItem], animated: false)
         
         return bar
@@ -38,7 +44,7 @@ class LoginController: UIViewController {
         let label = UILabel()
         label.frame = (CGRect(x: 0, y: 0, width: 150, height: 44))
         label.text = "Email"
-        label.font = UIFont(name: "SF-Pro-Text-Medium", size: 17.0)
+        label.font = UIFont(name: "SF Pro Text-Medium", size: 10.0)
         label.textColor = UIColor(hex: "000000")
         
         return label
@@ -144,6 +150,10 @@ class LoginController: UIViewController {
         print("mdr")
     }
     
+    @objc func handledismiss(sender:UIBarButtonItem!) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     @objc func handleLoginAction(sender: UIButton!) {
 //        self.dismiss(animated: true, completion: nil)
 //        var email: String = "quentin.cettier@hetic.net"
@@ -223,7 +233,7 @@ class LoginController: UIViewController {
         
         loginImage.translatesAutoresizingMaskIntoConstraints = false
 
-        loginImage.topAnchor.constraint(equalTo: view.topAnchor, constant: view.frame.size.height * 0.1).isActive = true
+        loginImage.topAnchor.constraint(equalTo: view.topAnchor, constant: view.frame.size.height * 0.15).isActive = true
         loginImage.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
 
     }
