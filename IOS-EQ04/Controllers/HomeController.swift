@@ -16,8 +16,29 @@ class HomeController: UIViewController, UITabBarDelegate{
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var barCharts: VCoreBarChart!
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var tabBar: UITabBar!
     @IBOutlet weak var addDrinkItem: UITabBarItem!
+    
+    
+    
+    @IBAction func indexChanged(_ sender: Any) {
+        switch segmentedControl.selectedSegmentIndex
+        {
+        case 0:
+            print("First Segment Selected");
+        case 1:
+            print("Second Segment Selected");
+        case 2:
+            print("Third Segment Selected");
+        default:
+            break
+        }
+    }
+    
+    
+
+    
     
     var parties: [Party] = []
 
