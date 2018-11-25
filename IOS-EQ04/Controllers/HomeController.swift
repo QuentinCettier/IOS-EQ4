@@ -9,43 +9,35 @@
 import UIKit
 import FirebaseAuth
 import FirebaseFirestore
+import CoreCharts
 
 
 class HomeController: UIViewController, UITabBarDelegate{
 
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var barCharts: VCoreBarChart!
     @IBOutlet weak var tabBar: UITabBar!
     @IBOutlet weak var addDrinkItem: UITabBarItem!
     
-    
-    
-    let LogoutButton: UIButton = {
-        var btn = UIButton()
-        
-        btn.frame = (CGRect(x: 0, y: 0, width: 100, height: 0))
-        btn.setTitle("Logout", for: .normal)
-        btn.titleLabel?.font = UIFont(name: "SF-Pro-Text-Medium", size: 19.0)
-        btn.backgroundColor = UIColor(hex: "F89934")
-        btn.layer.cornerRadius = 15
-        
-        btn.layer.shadowColor = UIColor.black.cgColor
-        btn.layer.shadowOffset = CGSize(width: 0, height: 2)
-        btn.layer.shadowRadius = 2
-        btn.layer.shadowOpacity = 0.2
-        
-        btn.addTarget(self, action: #selector(handleLogoutAction), for: .touchUpInside)
-        
-        return btn
-    }()
+    var parties: [Party] = []
+
     override func viewDidLoad() {
-        
         super.viewDidLoad()
+        
         tabBar.delegate = self
-       
         
-        view.addSubview(LogoutButton)
-        setupLogoutButton()
+        parties = createArray()
         
-        // Do any additional setup after loading the view
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.alwaysBounceVertical = false
+        
+        barCharts.dataSource = self
+
+        barCharts.displayConfig.barWidth = 30
+        barCharts.displayConfig.barSpace = 12
+        barCharts.displayConfig.titleFontSize = 16
+        barCharts.displayConfig.valueFontSize = 16
     }
     
     
@@ -56,21 +48,62 @@ class HomeController: UIViewController, UITabBarDelegate{
             self.present(AddDrinkController, animated: false, completion: nil)
         }
     }
+
+}
+
+
+// Configuration for the parties table
+extension HomeController: UITableViewDataSource, UITableViewDelegate {
     
-    @objc func handleLogoutAction(sender: UIButton!) {
-        try! Auth.auth().signOut()
-        self.dismiss(animated: false, completion: nil)
-    }
-    
-    private func setupLogoutButton() {
-        LogoutButton.translatesAutoresizingMaskIntoConstraints = false
+    func createArray() -> [Party] {
         
-        LogoutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        LogoutButton.bottomAnchor.constraint(equalTo: tabBar.topAnchor, constant: -15).isActive = true
-        LogoutButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 30).isActive = true
-        LogoutButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -30).isActive = true
-        LogoutButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
-
+        var tempData: [Party] = []
+        
+        let party1 = Party(litres: 4.5, date: "12 Nov. 2018")
+        let party2 = Party(litres: 3.0, date: "10 Nov. 2018")
+        
+        tempData.append(party1)
+        tempData.append(party2)
+        
+        return tempData
     }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return parties.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let party = parties[indexPath.row]
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PartyTableViewCell") as! PartyTableViewCell
+        
+        cell.setParty(party: party)
+        
+        return cell
+    }
+    
+}
 
+
+extension HomeController: CoreChartViewDataSource {
+    func loadCoreChartData() -> [CoreChartEntry] {
+        var allData = [CoreChartEntry]()
+
+        let days = ["M","T","W","T", "F", "S", "S"]
+
+        let statistics = [2, 4, 5, 3, 8, 7, 2]
+
+        for index in 0..<days.count {
+
+            let newEntry = CoreChartEntry(id: "\(statistics[index])",
+                barTitle: days[index],
+                barHeight: Double(statistics[index]),
+                barColor: UIColor.white.withAlphaComponent(0.5))
+
+
+            allData.append(newEntry)
+
+        }
+        return allData
+    }
 }
