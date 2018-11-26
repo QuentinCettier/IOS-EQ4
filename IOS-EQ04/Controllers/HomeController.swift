@@ -12,7 +12,7 @@ import FirebaseFirestore
 import CoreCharts
 
 
-class HomeController: UIViewController, UITabBarDelegate{
+class HomeController: UIViewController, UITabBarDelegate, CoreChartViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var barCharts: VCoreBarChart!
@@ -20,44 +20,28 @@ class HomeController: UIViewController, UITabBarDelegate{
     @IBOutlet weak var tabBar: UITabBar!
     @IBOutlet weak var addDrinkItem: UITabBarItem!
     
-    
+    let statistics1 = [1, 1, 1, 1, 1, 1]
+    let statistics2 = [1, 1, 1, 2, 1, 1]
+    let statistics3 = [1, 1, 3, 1, 1, 1]
     
     @IBAction func indexChanged(_ sender: Any) {
         switch segmentedControl.selectedSegmentIndex
         {
         case 0:
-            print("First Segment Selected");
+            loadCoreChartData(statistics1);
         case 1:
-            print("Second Segment Selected");
+            loadCoreChartData(statistics2);
         case 2:
-            print("Third Segment Selected");
+            loadCoreChartData(statistics3);
         default:
             break
         }
     }
     
-    
-
-    
-    
     var parties: [Party] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let db = Firestore.firestore()
-        
-        db.collection("users").whereField("email", isEqualTo: "ryzlane@free.fr")
-            .getDocuments() { (querySnapshot, err) in
-                if let err = err {
-                    print("Error getting documents: \(err)")
-                } else {
-                    for document in querySnapshot!.documents {
-                        print("\(document.documentID) => \(document.data())")
-                    }
-                }
-        }
-
 
         tabBar.delegate = self
         
@@ -73,6 +57,25 @@ class HomeController: UIViewController, UITabBarDelegate{
         barCharts.displayConfig.barSpace = 12
         barCharts.displayConfig.titleFontSize = 16
         barCharts.displayConfig.valueFontSize = 16
+    }
+    
+    func loadCoreChartData(_ statistics: Array<Int>) -> [CoreChartEntry] {
+        var allData = [CoreChartEntry]()
+        
+        let days = ["M","T","W","T", "F", "S", "S"]
+        
+        for index in 0..<days.count {
+            
+            let newEntry = CoreChartEntry(id: "\(statistics[index])",
+                barTitle: days[index],
+                barHeight: Double(statistics[index]),
+                barColor: UIColor.white.withAlphaComponent(0.5))
+            
+            
+            allData.append(newEntry)
+            
+        }
+        return allData
     }
     
     
@@ -117,28 +120,4 @@ extension HomeController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
-}
-
-
-extension HomeController: CoreChartViewDataSource {
-    func loadCoreChartData() -> [CoreChartEntry] {
-        var allData = [CoreChartEntry]()
-
-        let days = ["M","T","W","T", "F", "S", "S"]
-
-        let statistics = [2, 4, 5, 3, 8, 7, 2]
-
-        for index in 0..<days.count {
-
-            let newEntry = CoreChartEntry(id: "\(statistics[index])",
-                barTitle: days[index],
-                barHeight: Double(statistics[index]),
-                barColor: UIColor.white.withAlphaComponent(0.5))
-
-
-            allData.append(newEntry)
-
-        }
-        return allData
-    }
 }
