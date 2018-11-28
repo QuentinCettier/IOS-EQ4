@@ -19,25 +19,7 @@ class HomeController: UIViewController, UITabBarDelegate, CoreChartViewDataSourc
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var tabBar: UITabBar!
     @IBOutlet weak var addDrinkItem: UITabBarItem!
-    
-    let statistics1 = [1, 1, 1, 1, 1, 1]
-    let statistics2 = [1, 1, 1, 2, 1, 1]
-    let statistics3 = [1, 1, 3, 1, 1, 1]
-    
-    @IBAction func indexChanged(_ sender: Any) {
-        switch segmentedControl.selectedSegmentIndex
-        {
-        case 0:
-            loadCoreChartData(statistics1);
-        case 1:
-            loadCoreChartData(statistics2);
-        case 2:
-            loadCoreChartData(statistics3);
-        default:
-            break
-        }
-    }
-    
+
     var parties: [Party] = []
 
     override func viewDidLoad() {
@@ -59,10 +41,12 @@ class HomeController: UIViewController, UITabBarDelegate, CoreChartViewDataSourc
         barCharts.displayConfig.valueFontSize = 16
     }
     
-    func loadCoreChartData(_ statistics: Array<Int>) -> [CoreChartEntry] {
+    func loadCoreChartData() -> [CoreChartEntry] {
         var allData = [CoreChartEntry]()
         
         let days = ["M","T","W","T", "F", "S", "S"]
+        
+        let statistics = [1, 1, 3, 1, 2, 1, 5]
         
         for index in 0..<days.count {
             
@@ -85,6 +69,8 @@ class HomeController: UIViewController, UITabBarDelegate, CoreChartViewDataSourc
             let AddDrinkController = myStoryboard.instantiateViewController(withIdentifier: "AddDrinkController")
             self.present(AddDrinkController, animated: false, completion: nil)
         }
+        
+        
     }
 
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="PmO-Yi-Ymb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -13,7 +13,7 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController storyboardIdentifier="HomeController" id="BYZ-38-t0r" customClass="HomeController" customModule="IOS_EQ04" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="HomeView" customModule="IOS_EQ04" customModuleProvider="target">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -29,6 +29,7 @@
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1SV-cN-kNp">
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <color key="backgroundColor" red="0.93449187278747559" green="0.54741150140762329" blue="0.15306535363197327" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="barTintColor" red="0.93449187278747559" green="0.54741150140762329" blue="0.15306535363197327" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <textAttributes key="titleTextAttributes">
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </textAttributes>
@@ -317,7 +318,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="addDrinkItem" destination="U1r-Y8-QyP" id="vNs-j9-VVf"/>
+                        <outlet property="addDrinkItem" destination="U1r-Y8-QyP" id="or1-oX-a5M"/>
                         <outlet property="barCharts" destination="Ilj-wl-Z2h" id="EdT-95-zKX"/>
                         <outlet property="segmentedControl" destination="Vxt-o6-chP" id="Vcw-m5-2dt"/>
                         <outlet property="tabBar" destination="nDw-EN-Obj" id="9VJ-sS-tDg"/>
@@ -327,6 +328,119 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3304.8000000000002" y="26.53673163418291"/>
+        </scene>
+        <!--Party View Controller-->
+        <scene sceneID="85P-wM-QRX">
+            <objects>
+                <viewController id="QNU-Gp-yzI" customClass="PartyViewController" customModule="IOS_EQ04" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pWW-J4-pKk">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PI1-zZ-hKE">
+                                <rect key="frame" x="95" y="64" width="185" height="454"/>
+                            </view>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tWM-ZX-hGu">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <color key="barTintColor" red="0.93449187278747559" green="0.54741150140762329" blue="0.15306535363197327" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </textAttributes>
+                                <textAttributes key="largeTitleTextAttributes">
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="Your party" id="TY8-u9-FrN"/>
+                                </items>
+                            </navigationBar>
+                            <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Mu-HS-yXF">
+                                <rect key="frame" x="0.0" y="618" width="375" height="49"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <items>
+                                    <tabBarItem systemItem="favorites" id="Czw-RP-XMP"/>
+                                    <tabBarItem systemItem="favorites" id="rGd-ad-llW"/>
+                                    <tabBarItem systemItem="more" id="IzP-rC-PCD"/>
+                                </items>
+                            </tabBar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0iy-7a-wAt">
+                                <rect key="frame" x="30" y="548" width="315" height="50"/>
+                                <color key="backgroundColor" red="0.93449187278747559" green="0.54741150140762329" blue="0.15306535363197327" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="eQP-HA-bce"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
+                                <state key="normal" title="Add a drink">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="sf0-zB-Wn4">
+                                <rect key="frame" x="20" y="183.5" width="50" height="300"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kIk-y4-4b3" userLabel="first-aid button">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <color key="backgroundColor" red="0.93449187278747559" green="0.54741150140762329" blue="0.15306535363197327" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="kRT-h4-voH"/>
+                                        </constraints>
+                                        <state key="normal" image="first-aid"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="meQ-2F-Kjq" userLabel="credit-card button">
+                                        <rect key="frame" x="0.0" y="125" width="50" height="50"/>
+                                        <color key="backgroundColor" red="0.93449187278747559" green="0.54741150140762329" blue="0.15306535363197327" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="dFw-FC-XlN"/>
+                                        </constraints>
+                                        <state key="normal" image="credit-card"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YuF-ug-k56" userLabel="map button">
+                                        <rect key="frame" x="0.0" y="250" width="50" height="50"/>
+                                        <color key="backgroundColor" red="0.93449187278747559" green="0.54741150140762329" blue="0.15306535363197327" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="gQv-cz-e3g"/>
+                                        </constraints>
+                                        <state key="normal" image="map"/>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="1Sf-ap-fLc"/>
+                                    <constraint firstAttribute="width" constant="50" id="vgm-TJ-7jJ"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="0iy-7a-wAt" firstAttribute="top" secondItem="PI1-zZ-hKE" secondAttribute="bottom" constant="30" id="3y7-e6-rhT"/>
+                            <constraint firstItem="0iy-7a-wAt" firstAttribute="leading" secondItem="2gl-gx-Vyj" secondAttribute="leading" constant="30" id="7gE-tI-w9f"/>
+                            <constraint firstItem="2Mu-HS-yXF" firstAttribute="trailing" secondItem="tWM-ZX-hGu" secondAttribute="trailing" id="7qi-Vi-FBJ"/>
+                            <constraint firstItem="PI1-zZ-hKE" firstAttribute="centerX" secondItem="pWW-J4-pKk" secondAttribute="centerX" id="9pE-wW-vxx"/>
+                            <constraint firstItem="2Mu-HS-yXF" firstAttribute="leading" secondItem="tWM-ZX-hGu" secondAttribute="leading" id="Gf7-zx-6B9"/>
+                            <constraint firstItem="2Mu-HS-yXF" firstAttribute="bottom" secondItem="2gl-gx-Vyj" secondAttribute="bottom" id="Gtz-Hd-gsC"/>
+                            <constraint firstItem="tWM-ZX-hGu" firstAttribute="top" secondItem="2gl-gx-Vyj" secondAttribute="top" id="Hvv-h5-9qa"/>
+                            <constraint firstItem="sf0-zB-Wn4" firstAttribute="centerY" secondItem="pWW-J4-pKk" secondAttribute="centerY" id="JWh-5S-Uao"/>
+                            <constraint firstItem="PI1-zZ-hKE" firstAttribute="leading" secondItem="2gl-gx-Vyj" secondAttribute="leading" constant="95" id="Qaj-fU-SVb"/>
+                            <constraint firstItem="2Mu-HS-yXF" firstAttribute="top" secondItem="0iy-7a-wAt" secondAttribute="bottom" constant="20" id="RWf-f8-Iqz"/>
+                            <constraint firstItem="tWM-ZX-hGu" firstAttribute="leading" secondItem="2gl-gx-Vyj" secondAttribute="leading" id="Sfo-lm-heq"/>
+                            <constraint firstItem="sf0-zB-Wn4" firstAttribute="leading" secondItem="2gl-gx-Vyj" secondAttribute="leading" constant="20" id="ezF-j9-eUt"/>
+                            <constraint firstItem="2gl-gx-Vyj" firstAttribute="trailing" secondItem="0iy-7a-wAt" secondAttribute="trailing" constant="30" id="fsg-Gn-JGT"/>
+                            <constraint firstItem="PI1-zZ-hKE" firstAttribute="top" secondItem="tWM-ZX-hGu" secondAttribute="bottom" id="g0Q-Sj-PHO"/>
+                            <constraint firstItem="tWM-ZX-hGu" firstAttribute="trailing" secondItem="2gl-gx-Vyj" secondAttribute="trailing" id="kx6-O3-bxK"/>
+                            <constraint firstItem="2Mu-HS-yXF" firstAttribute="leading" secondItem="pWW-J4-pKk" secondAttribute="leading" id="mat-G2-gLf"/>
+                            <constraint firstItem="2Mu-HS-yXF" firstAttribute="centerX" secondItem="0iy-7a-wAt" secondAttribute="centerX" id="vUP-HJ-Ra1"/>
+                            <constraint firstItem="2gl-gx-Vyj" firstAttribute="trailing" secondItem="PI1-zZ-hKE" secondAttribute="trailing" constant="95" id="wEB-cL-gmS"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="2gl-gx-Vyj"/>
+                    </view>
+                    <connections>
+                        <outlet property="addADrinkButton" destination="0iy-7a-wAt" id="i9C-aq-zA9"/>
+                        <outlet property="creditCardButton" destination="meQ-2F-Kjq" id="FyZ-pL-YbG"/>
+                        <outlet property="drinkContainer" destination="PI1-zZ-hKE" id="6Mr-Qs-Smt"/>
+                        <outlet property="firstAidButton" destination="kIk-y4-4b3" id="rb9-Gz-qze"/>
+                        <outlet property="mapButton" destination="YuF-ug-k56" id="dS2-nE-wHf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gTz-FX-XGe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4104.8000000000002" y="16.641679160419791"/>
         </scene>
         <!--Add Drink Controller-->
         <scene sceneID="eVU-c1-Zmw">
@@ -358,7 +472,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g3V-9c-A1r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4097" y="28"/>
+            <point key="canvasLocation" x="5028" y="27"/>
         </scene>
         <!--Warning View Controller-->
         <scene sceneID="Uon-NO-FrC">
@@ -422,6 +536,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="credit-card" width="33" height="25"/>
+        <image name="first-aid" width="33" height="28"/>
+        <image name="map" width="31" height="33"/>
         <image name="plusIcon" width="25" height="25"/>
     </resources>
 </document>
