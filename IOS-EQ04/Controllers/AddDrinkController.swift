@@ -8,9 +8,8 @@
 
 import UIKit
 import FirebaseFirestore
-import FirebaseAuth
 
-class AddDrinkController: UIViewController, UITextFieldDelegate , UIScrollViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UITableViewDelegate, UITableViewDataSource {
+class AddDrinkController: UIViewController, UIScrollViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UITableViewDelegate, UITableViewDataSource {
     
     
 
@@ -23,16 +22,14 @@ class AddDrinkController: UIViewController, UITextFieldDelegate , UIScrollViewDe
     
     var arr: [String] = []
     var img_icon: [String] = []
-    var price_arr: [String] = ["3", "5", "10", "15"]
-    
     
     var img_choosed: String = ""
     var drink_choosed: String = ""
-    var price_choose: String = ""
+    var price_choose: Int = 0
     
     let pageControl: UIPageControl = {
        var pControl =  UIPageControl(frame: .zero)
-        pControl.numberOfPages = 4
+        pControl.numberOfPages = 3
         pControl.pageIndicatorTintColor = UIColor(hex: "D5D5D5")
         pControl.currentPageIndicatorTintColor = UIColor(hex: "FF9200")
         
@@ -54,18 +51,6 @@ class AddDrinkController: UIViewController, UITextFieldDelegate , UIScrollViewDe
         
         return bar
         
-    }()
-    
-    let priceInput: UITextField = {
-        let input = UITextField()
-        
-        input.placeholder = "4.50"
-        input.borderStyle = UITextField.BorderStyle.roundedRect
-        input.keyboardType = UIKeyboardType.numbersAndPunctuation
-        input.autocorrectionType = UITextAutocorrectionType.no
-        input.autocapitalizationType = .none
-        
-        return input
     }()
     
     let ModalLabel: UILabel = {
@@ -127,27 +112,23 @@ class AddDrinkController: UIViewController, UITextFieldDelegate , UIScrollViewDe
         return btn
     }()
     
-    
-    
     let priceCollectionView: UICollectionView = {
         let pricelayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         pricelayout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 5)
-        pricelayout.itemSize = CGSize(width: 55, height: 55)
+        pricelayout.itemSize = CGSize(width: 75, height: 75)
         pricelayout.minimumInteritemSpacing = 0
         pricelayout.minimumLineSpacing = 0
         
         let cView = UICollectionView(frame: CGRect(x:0,y:0,width:0, height:0), collectionViewLayout: pricelayout)
+        
         cView.backgroundColor = .white
-        cView.register(PriceCollectionViewCell.self, forCellWithReuseIdentifier: "MyPrice")
+        cView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "MyPrice")
         
         return cView
     }()
-    let db = Firestore.firestore()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.hideKeyboardWhenTappedAround()
 
         view.addSubview(AddDrinkButton)
         view.addSubview(modalView)
@@ -167,7 +148,7 @@ class AddDrinkController: UIViewController, UITextFieldDelegate , UIScrollViewDe
         setupPageControl()
         
         
-        
+         let db = Firestore.firestore()
         
 //        db.collection("drinks").getDocument { document, error in
 //            if let drink = document.flatMap({
@@ -229,9 +210,7 @@ class AddDrinkController: UIViewController, UITextFieldDelegate , UIScrollViewDe
         
         let slide2 = Slide(img: "security", title: "Stay Safe", text: "Thanks to our emergency page, go home, block your credit card or call urgency numbers easily")
         
-        let slide3 = Slide(img: "security", title: "Stay Safe", text: "Thanks to our emergency page, go home, block your credit card or call urgency numbers easily")
-        
-        var slides: [Slide] = [slide0,slide1,slide2, slide3]
+        var slides: [Slide] = [slide0,slide1,slide2]
         
         var frame = CGRect(x:0, y:0, width: scrollView.frame.size.width * 0.6, height:180)
         
@@ -304,9 +283,8 @@ class AddDrinkController: UIViewController, UITextFieldDelegate , UIScrollViewDe
                 scrollView.addSubview(tableView)
                 
             } else if index == 2 {
-                var priceCollFrame = CGRect(x:0, y:scrollView.frame.size.height * 0.35, width: scrollView.frame.size.width, height:60)
                 titleFrame.origin.x = scrollView.frame.size.width * CGFloat(index)
-                priceCollFrame.origin.x = scrollView.frame.size.width * CGFloat(index)
+                tableFrame.origin.x = scrollView.frame.size.width * CGFloat(index)
                 let priceLabel: UILabel = {
                     let lbl = UILabel()
                     lbl.frame = titleFrame
@@ -320,91 +298,18 @@ class AddDrinkController: UIViewController, UITextFieldDelegate , UIScrollViewDe
                 }()
                 
                 
-                let customPriceLabel: UILabel = {
-                    let lbl = UILabel()
-                    lbl.frame = titleFrame
-                    lbl.font = UIFont(name: "Poppins-Medium", size: 19.0)
-                    lbl.text = "Custom price"
-                    lbl.textColor = UIColor(hex: "000000")
-                    lbl.textAlignment = .left
-                    lbl.numberOfLines = 0
-                    
-                    return lbl
-                }()
                 
                 
                 
                 priceCollectionView.dataSource = self
                 priceCollectionView.delegate = self
-                priceCollectionView.frame = priceCollFrame
                 
                 scrollView.addSubview(priceLabel)
                 scrollView.addSubview(priceCollectionView)
-                scrollView.addSubview(customPriceLabel)
-                scrollView.addSubview(priceInput)
-                
-                priceInput.frame = titleFrame
-                
-                priceInput.delegate = self
-                
-                customPriceLabel.translatesAutoresizingMaskIntoConstraints = false
-                scrollView.translatesAutoresizingMaskIntoConstraints = false
-                priceInput.translatesAutoresizingMaskIntoConstraints = false
-
-                customPriceLabel.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -30).isActive = true
-                
-                customPriceLabel.bottomAnchor.constraint(equalTo: scrollView.topAnchor, constant: scrollView.frame.height - 120).isActive = true
-                customPriceLabel.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: scrollView.frame.width * 2).isActive = true
-
-                priceInput.topAnchor.constraint(equalTo: customPriceLabel.bottomAnchor, constant: 15).isActive = true
-
-                priceInput.heightAnchor.constraint(equalToConstant: 44).isActive = true
-                priceInput.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: scrollView.frame.width * 2).isActive = true
-                priceInput.widthAnchor.constraint(equalToConstant: scrollView.frame.width).isActive = true
-            } else if index == 3 {
-                titleFrame.origin.x = scrollView.frame.size.width * CGFloat(index)
-                
-                let resumeLabel: UILabel = {
-                    let lbl = UILabel()
-                    lbl.frame = titleFrame
-                    lbl.font = UIFont(name: "Poppins-Medium", size: 23.0)
-                    lbl.text = "Resume"
-                    lbl.textColor = UIColor(hex: "000000")
-                    lbl.textAlignment = .left
-                    lbl.numberOfLines = 0
-                    
-                    return lbl
-                }()
-                
-                var btnFrame = CGRect(x:0, y: 0, width: scrollView.frame.size.width * 0.6, height:44)
-                btnFrame.origin.x = scrollView.frame.size.width * CGFloat(index) + scrollView.frame.size.width * 0.2
-                btnFrame.origin.y = scrollView.frame.size.height * 0.8
-                let addButton: UIButton = {
-                    var btn = UIButton()
-                    
-                    btn.frame = btnFrame
-                    btn.setTitle("Good !", for: .normal)
-                    btn.titleLabel?.font = UIFont(name: "SF-Pro-Text-Medium", size: 19.0)
-                    btn.backgroundColor = UIColor(hex: "F89934")
-                    btn.layer.cornerRadius = 15
-                    
-                    btn.layer.shadowColor = UIColor.black.cgColor
-                    btn.layer.shadowOffset = CGSize(width: 0, height: 2)
-                    btn.layer.shadowRadius = 2
-                    btn.layer.shadowOpacity = 0.2
-                    
-                    btn.addTarget(self, action: #selector(handleAddDrink), for: .touchUpInside)
-                    
-                    return btn
-                }()
-                
-                scrollView.addSubview(resumeLabel)
-                scrollView.addSubview(addButton)
-                scrollView.translatesAutoresizingMaskIntoConstraints = false
                 
                 
                 
-//                addButton.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: scrollView.frame.width * 3.3).isActive = true
+                scrollView.addSubview(priceLabel)
                 
             }
 //
@@ -445,22 +350,14 @@ class AddDrinkController: UIViewController, UITextFieldDelegate , UIScrollViewDe
 //            scrollView.addSubview(textlabel)
         }
         
-        scrollView.contentSize = CGSize(width: (scrollView.frame.size.width * 4), height: (scrollView.frame.size.height))
+        scrollView.contentSize = CGSize(width: (scrollView.frame.size.width * 3), height: (scrollView.frame.size.height))
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.delegate = self
        
     }
     
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        if(textField == priceInput) {
-            price_choose = priceInput.text!
-            UIView.animate(withDuration: 0.4) {
-                self.scrollView.contentOffset = CGPoint(x: 764,y:0)
-            }
-            
-            
-        }
-    }
+    
+    
     @objc func addd(sender: UITapGestureRecognizer) {
         
         UIView.animate(withDuration: 0.3, animations: {
@@ -472,43 +369,6 @@ class AddDrinkController: UIViewController, UITextFieldDelegate , UIScrollViewDe
     
     @objc func handledismiss(sender:UIBarButtonItem!) {
         self.dismiss(animated: true, completion: nil)
-    }
-    
-    @objc func handleAddDrink(sender:UIBarButtonItem!) {
-        print(price_choose)
-        print(img_choosed)
-        print(drink_choosed)
-        
-        
-        let now = Date()
-        
-        let formatter = DateFormatter()
-        
-        formatter.timeZone = TimeZone.current
-        
-        formatter.dateFormat = "yyyy-MM-dd HH:mm"
-        
-        let dateString = formatter.string(from: now)
-        
-        let newDrink: [String: Any] = [
-            "drinkName" : self.drink_choosed,
-            "drinkSize": self.img_choosed,
-            "drinkPrice": self.price_choose,
-            "date": dateString
-            ]
-        
-        db.collection("users").whereField("email", isEqualTo: Auth.auth().currentUser?.email )
-            .getDocuments { (querySnapshot, err) in
-                if let err = err {
-                    print("Error getting documents: \(err)")
-                } else {
-                    for document in querySnapshot!.documents {
-                        print("\(document.documentID) => \(document.data())")
-                        self.db.collection("users").document(document.documentID).collection("drinks").addDocument(data: newDrink)
-                    }
-                }
-        }
-        
     }
 //
     func setupPageControl() {
@@ -566,85 +426,66 @@ class AddDrinkController: UIViewController, UITextFieldDelegate , UIScrollViewDe
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let myCell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCell", for: indexPath as IndexPath)
+        var imgFrame: CGRect = CGRect()
+        var imgView: UIImageView = UIImageView()
         
-        if collectionView == priceCollectionView {
-            let myCell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyPrice", for: indexPath as IndexPath) as! PriceCollectionViewCell
-            myCell.layer.borderColor = UIColor(hex: "F89934").cgColor
-            myCell.layer.borderWidth = 2
-            myCell.layer.cornerRadius = 28
+        var imgFrameWhite: CGRect = CGRect()
+        var imgViewWhite: UIImageView = UIImageView()
+        
+        if indexPath.row == 0 {
+            imgFrame = CGRect(x:myCell.frame.size.width * 0.20, y:myCell.frame.size.height * 0.3, width:45, height:35)
+            imgView = UIImageView(frame: imgFrame)
             
-            myCell.Label.frame = (CGRect(x: myCell.frame.size.width * 0.25, y: myCell.frame.size.height * 0.25, width: 26, height: 28))
+            imgFrameWhite = CGRect(x:myCell.frame.size.width * 0.20, y:myCell.frame.size.height * 0.3, width:45, height:35)
+            imgViewWhite = UIImageView(frame: imgFrame)
+        } else if indexPath.row == 1 {
+            imgFrame = CGRect(x:myCell.frame.size.width * 0.33, y:myCell.frame.size.height * 0.2, width:25, height:45)
+            imgView = UIImageView(frame: imgFrame)
             
-            myCell.Label.text = price_arr[indexPath.row]
+            imgFrameWhite = CGRect(x:myCell.frame.size.width * 0.33, y:myCell.frame.size.height * 0.2, width:25, height:45)
+            imgViewWhite = UIImageView(frame: imgFrame)
             
-            return myCell
-        } else {
-            let myCell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCell", for: indexPath as IndexPath)
-            var imgFrame: CGRect = CGRect()
-            var imgView: UIImageView = UIImageView()
+        } else if indexPath.row == 2 {
+            imgFrame = CGRect(x:myCell.frame.size.width * 0.33, y:myCell.frame.size.height * 0.2, width:25, height:45)
+            imgView = UIImageView(frame: imgFrame)
             
-            var imgFrameWhite: CGRect = CGRect()
-            var imgViewWhite: UIImageView = UIImageView()
-            
-            if indexPath.row == 0 {
-                imgFrame = CGRect(x:myCell.frame.size.width * 0.20, y:myCell.frame.size.height * 0.3, width:45, height:35)
-                imgView = UIImageView(frame: imgFrame)
-                
-                imgFrameWhite = CGRect(x:myCell.frame.size.width * 0.20, y:myCell.frame.size.height * 0.3, width:45, height:35)
-                imgViewWhite = UIImageView(frame: imgFrame)
-            } else if indexPath.row == 1 {
-                imgFrame = CGRect(x:myCell.frame.size.width * 0.33, y:myCell.frame.size.height * 0.2, width:25, height:45)
-                imgView = UIImageView(frame: imgFrame)
-                
-                imgFrameWhite = CGRect(x:myCell.frame.size.width * 0.33, y:myCell.frame.size.height * 0.2, width:25, height:45)
-                imgViewWhite = UIImageView(frame: imgFrame)
-                
-            } else if indexPath.row == 2 {
-                imgFrame = CGRect(x:myCell.frame.size.width * 0.33, y:myCell.frame.size.height * 0.2, width:25, height:45)
-                imgView = UIImageView(frame: imgFrame)
-                
-                imgFrameWhite = CGRect(x:myCell.frame.size.width * 0.33, y:myCell.frame.size.height * 0.2, width:25, height:45)
-                imgViewWhite = UIImageView(frame: imgFrame)
-            }
-            
-            myCell.layer.borderColor = UIColor(hex: "F89934").cgColor
-            myCell.layer.borderWidth = 2
-            myCell.layer.cornerRadius = 35
-            imgView.image = UIImage(named: imgSize[indexPath.row])
-            imgViewWhite.image = UIImage(named: imgSize_white[indexPath.row])
-            imgViewWhite.alpha = 0
-            myCell.addSubview(imgView)
-            return myCell
+            imgFrameWhite = CGRect(x:myCell.frame.size.width * 0.33, y:myCell.frame.size.height * 0.2, width:25, height:45)
+            imgViewWhite = UIImageView(frame: imgFrame)
         }
+        
+        myCell.layer.borderColor = UIColor(hex: "F89934").cgColor
+        myCell.layer.borderWidth = 2
+        myCell.layer.cornerRadius = 35
+        imgView.image = UIImage(named: imgSize[indexPath.row])
+        imgViewWhite.image = UIImage(named: imgSize_white[indexPath.row])
+        imgViewWhite.alpha = 0
+        myCell.addSubview(imgView)
+        return myCell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
     {
-        if(collectionView == priceCollectionView) {
-            if let cell = collectionView.cellForItem(at: indexPath) {
-//                cell.backgroundColor = UIColor(hex: "F89934")
+        
+        if let cell = collectionView.cellForItem(at: indexPath) {
+            cell.backgroundColor = UIColor(hex: "F89934")
+            UIView.animate(withDuration: 0.4) {
+                self.scrollView.contentOffset = CGPoint(x: 255,y:0)
                 
+            }
+            self.pageControl.currentPage = 1
+            if indexPath.row == 0 {
+                img_choosed = "shot"
+            } else if indexPath.row == 1 {
+                img_choosed = "verre"
+            } else if indexPath.row == 2 {
+                img_choosed = "pinte"
             }
             
-        } else {
-            if let cell = collectionView.cellForItem(at: indexPath) {
-//                cell.backgroundColor = UIColor(hex: "F89934")
-                UIView.animate(withDuration: 0.4) {
-                    self.scrollView.contentOffset = CGPoint(x: 255,y:0)
-                    
-                }
-                self.pageControl.currentPage = 1
-                if indexPath.row == 0 {
-                    img_choosed = "shot"
-                } else if indexPath.row == 1 {
-                    img_choosed = "verre"
-                } else if indexPath.row == 2 {
-                    img_choosed = "pinte"
-                }
-                
-                print(img_choosed)
-            }
+            print(img_choosed)
         }
+        
+        
     }
     
     
@@ -672,6 +513,14 @@ class AddDrinkController: UIViewController, UITextFieldDelegate , UIScrollViewDe
         
     }
     
+    /*
+    // MARK: - Navigation
 
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+    }
+    */
 
 }
