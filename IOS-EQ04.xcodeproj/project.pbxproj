@@ -27,6 +27,7 @@
 		3AD7759E21A6B33A00078A00 /* DrinkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD7759D21A6B33A00078A00 /* DrinkTableViewCell.swift */; };
 		3AD775A021A6ED5A00078A00 /* Drink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD7759F21A6ED5800078A00 /* Drink.swift */; };
 		3AFF4CCA21A7FEBE007F9DBB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3AFF4CC921A7FEBE007F9DBB /* Assets.xcassets */; };
+		3AFF4CCC21AC9453007F9DBB /* PriceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFF4CCB21AC9453007F9DBB /* PriceCollectionViewCell.swift */; };
 		67E34B978539A4CA6B12A210 /* Pods_IOS_EQ04.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97936D173A49DC10A3D0A763 /* Pods_IOS_EQ04.framework */; };
 		C558F21821AD50EE00B740D6 /* PartyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C558F21721AD50EE00B740D6 /* PartyViewController.swift */; };
 		C558F21A21AD53A400B740D6 /* PartyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C558F21921AD53A400B740D6 /* PartyViewController.swift */; };
@@ -59,6 +60,7 @@
 		3AD7759D21A6B33A00078A00 /* DrinkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkTableViewCell.swift; sourceTree = "<group>"; };
 		3AD7759F21A6ED5800078A00 /* Drink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drink.swift; sourceTree = "<group>"; };
 		3AFF4CC921A7FEBE007F9DBB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3AFF4CCB21AC9453007F9DBB /* PriceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceCollectionViewCell.swift; sourceTree = "<group>"; };
 		3B698146C5CB88BE1C4282D4 /* Pods-IOS-EQ04.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IOS-EQ04.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IOS-EQ04/Pods-IOS-EQ04.debug.xcconfig"; sourceTree = "<group>"; };
 		97936D173A49DC10A3D0A763 /* Pods_IOS_EQ04.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IOS_EQ04.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C558F21721AD50EE00B740D6 /* PartyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartyViewController.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 			children = (
 				C5734C4521AB0A2100DB65C2 /* PartyTableViewCell.swift */,
 				3AD7759D21A6B33A00078A00 /* DrinkTableViewCell.swift */,
+				3AFF4CCB21AC9453007F9DBB /* PriceCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -364,7 +367,11 @@
 				3A78A8BB219A3C6C00FABB19 /* SliderHomeController.swift in Sources */,
 				3AD7759C21A4184500078A00 /* AddDrinkController.swift in Sources */,
 				3A78A8B72198994900FABB19 /* PeopleModel.swift in Sources */,
+<<<<<<< HEAD
 				C5734C4421AB09CC00DB65C2 /* PartyModel.swift in Sources */,
+=======
+				3AFF4CCC21AC9453007F9DBB /* PriceCollectionViewCell.swift in Sources */,
+>>>>>>> master
 				3A78A8AE21973F6500FABB19 /* HomeController.swift in Sources */,
 				3AD775A021A6ED5A00078A00 /* Drink.swift in Sources */,
 				3A78A8D0219C5A2200FABB19 /* LoginController.swift in Sources */,
