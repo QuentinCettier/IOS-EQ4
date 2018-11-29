@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Tk7-Mx-nyE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="R9m-mf-rWP">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -119,6 +119,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cv7-24-tHg">
+                                <rect key="frame" x="95" y="84" width="185" height="450"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hgL-Y8-gL2">
+                                        <rect key="frame" x="92.5" y="135" width="0.0" height="0.0"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="hgL-Y8-gL2" firstAttribute="centerX" secondItem="cv7-24-tHg" secondAttribute="centerX" id="Suj-bh-364"/>
+                                    <constraint firstAttribute="height" constant="450" id="Tm2-ra-xnV"/>
+                                </constraints>
+                            </view>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SAu-cJ-cPL">
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <color key="barTintColor" red="0.96478098630905151" green="0.57054632902145386" blue="0.1550479531288147" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -156,7 +172,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yHm-ox-M5r" userLabel="credit-card button">
-                                        <rect key="frame" x="0.0" y="125" width="50" height="50"/>
+                                        <rect key="frame" x="0.0" y="250" width="50" height="50"/>
                                         <color key="backgroundColor" red="0.93449187280000001" green="0.54741150139999994" blue="0.15306535360000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="DRH-2j-TNN"/>
@@ -166,42 +182,42 @@
                                             <action selector="CreditCardAction:" destination="W7H-aO-pEo" eventType="touchUpInside" id="Jdv-L2-BLp"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mom-cX-sh6" userLabel="map button">
-                                        <rect key="frame" x="0.0" y="250" width="50" height="50"/>
-                                        <color key="backgroundColor" red="0.93449187280000001" green="0.54741150139999994" blue="0.15306535360000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="oAv-gk-zra"/>
-                                        </constraints>
-                                        <state key="normal" image="map"/>
-                                        <connections>
-                                            <action selector="mapAction:" destination="W7H-aO-pEo" eventType="touchUpInside" id="DAY-vL-TOB"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="300" id="KFc-eJ-Yaf"/>
                                     <constraint firstAttribute="width" constant="50" id="yk2-Pu-DTh"/>
                                 </constraints>
                             </stackView>
-                            <view clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cv7-24-tHg">
-                                <rect key="frame" x="95" y="94" width="185" height="450"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="450" id="Tm2-ra-xnV"/>
-                                </constraints>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HWk-bQ-zkf">
+                                <rect key="frame" x="30" y="64" width="315" height="42"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ta1-cQ-cgd">
+                                <rect key="frame" x="187.5" y="204" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="HWk-bQ-zkf" firstAttribute="top" secondItem="SAu-cJ-cPL" secondAttribute="bottom" id="0H3-FI-rdZ"/>
                             <constraint firstItem="N1Z-HK-lp5" firstAttribute="trailing" secondItem="SAu-cJ-cPL" secondAttribute="trailing" id="1sS-qe-feI"/>
                             <constraint firstItem="SAu-cJ-cPL" firstAttribute="top" secondItem="QYK-OK-XO6" secondAttribute="top" id="1t5-Db-Dei"/>
+                            <constraint firstItem="QYK-OK-XO6" firstAttribute="trailing" secondItem="HWk-bQ-zkf" secondAttribute="trailing" constant="30" id="394-Ox-yAQ"/>
                             <constraint firstItem="cv7-24-tHg" firstAttribute="top" secondItem="SAu-cJ-cPL" secondAttribute="bottom" constant="20" id="6n2-Vr-UBN"/>
+                            <constraint firstItem="cv7-24-tHg" firstAttribute="top" secondItem="HWk-bQ-zkf" secondAttribute="bottom" constant="-22" id="8In-Vc-C8I"/>
                             <constraint firstItem="cv7-24-tHg" firstAttribute="centerX" secondItem="Kvy-yr-EkW" secondAttribute="centerX" id="ASN-9P-44a"/>
                             <constraint firstItem="SAu-cJ-cPL" firstAttribute="trailing" secondItem="QYK-OK-XO6" secondAttribute="trailing" id="C9i-R7-b5t"/>
                             <constraint firstItem="N1Z-HK-lp5" firstAttribute="leading" secondItem="Kvy-yr-EkW" secondAttribute="leading" id="JZx-iP-Gmm"/>
+                            <constraint firstItem="HWk-bQ-zkf" firstAttribute="leading" secondItem="QYK-OK-XO6" secondAttribute="leading" constant="30" id="MlX-Vf-UBH"/>
                             <constraint firstItem="SAu-cJ-cPL" firstAttribute="leading" secondItem="QYK-OK-XO6" secondAttribute="leading" id="RMy-3p-nv6"/>
+                            <constraint firstItem="HWk-bQ-zkf" firstAttribute="top" secondItem="SAu-cJ-cPL" secondAttribute="bottom" id="V0q-AG-Ili"/>
                             <constraint firstItem="N1Z-HK-lp5" firstAttribute="bottom" secondItem="QYK-OK-XO6" secondAttribute="bottom" id="Y47-YK-wyc"/>
+                            <constraint firstItem="hgL-Y8-gL2" firstAttribute="top" secondItem="Ta1-cQ-cgd" secondAttribute="bottom" constant="15" id="exa-wv-qcN"/>
+                            <constraint firstItem="Ta1-cQ-cgd" firstAttribute="centerX" secondItem="Kvy-yr-EkW" secondAttribute="centerX" id="fyG-AH-Jt2"/>
                             <constraint firstItem="cv7-24-tHg" firstAttribute="leading" secondItem="QYK-OK-XO6" secondAttribute="leading" constant="95" id="gy5-ji-sNT"/>
+                            <constraint firstItem="cv7-24-tHg" firstAttribute="top" secondItem="Ta1-cQ-cgd" secondAttribute="bottom" constant="-120" id="iYc-Cm-OHy"/>
                             <constraint firstItem="g5y-6o-Ehr" firstAttribute="leading" secondItem="QYK-OK-XO6" secondAttribute="leading" constant="20" id="jYx-U2-Mej"/>
                             <constraint firstItem="N1Z-HK-lp5" firstAttribute="leading" secondItem="SAu-cJ-cPL" secondAttribute="leading" id="jtJ-qL-HXn"/>
                             <constraint firstItem="g5y-6o-Ehr" firstAttribute="centerY" secondItem="Kvy-yr-EkW" secondAttribute="centerY" id="myX-4F-Lsq"/>
@@ -210,12 +226,14 @@
                         <viewLayoutGuide key="safeArea" id="QYK-OK-XO6"/>
                     </view>
                     <connections>
+                        <outlet property="countLabel" destination="Ta1-cQ-cgd" id="yzA-cs-MWe"/>
                         <outlet property="creditCardButton" destination="yHm-ox-M5r" id="WzH-Td-Xkt"/>
                         <outlet property="drinkContainer" destination="cv7-24-tHg" id="gcK-Hp-xgf"/>
+                        <outlet property="drinksLabel" destination="hgL-Y8-gL2" id="Cxb-iF-dz9"/>
                         <outlet property="feedBarItem" destination="Pgr-sv-893" id="mzR-zb-zYj"/>
                         <outlet property="firstAidButton" destination="evP-6I-VWG" id="e0e-OH-lFb"/>
+                        <outlet property="hideTopView" destination="HWk-bQ-zkf" id="mDk-4a-299"/>
                         <outlet property="jaugeView" destination="cv7-24-tHg" id="mNh-b3-Ieo"/>
-                        <outlet property="mapButton" destination="Mom-cX-sh6" id="bLt-px-NNQ"/>
                         <outlet property="partyBarItem" destination="VXV-pD-Hz7" id="1OT-bL-xAt"/>
                         <outlet property="profileBarItem" destination="ayx-v4-gpf" id="ddv-eV-4hp"/>
                         <outlet property="tabBar" destination="N1Z-HK-lp5" id="aRX-8z-X4R"/>
@@ -267,49 +285,20 @@
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="han-4V-omQ" userLabel="globalStats">
                                 <rect key="frame" x="0.0" y="164" width="375" height="50"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u2c-4D-Omt" userLabel="fav">
-                                        <rect key="frame" x="0.0" y="0.0" width="125" height="50"/>
-                                        <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ndD-xI-uUj">
-                                                <rect key="frame" x="0.0" y="0.0" width="125" height="50"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="var" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZIZ-kd-dRo">
-                                                        <rect key="frame" x="48" y="0.0" width="29" height="25"/>
-                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="favorite" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FzW-4e-zB7">
-                                                        <rect key="frame" x="41" y="25" width="43" height="25"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                            </stackView>
-                                        </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="ndD-xI-uUj" secondAttribute="bottom" id="Uz8-bP-1lV"/>
-                                            <constraint firstItem="ndD-xI-uUj" firstAttribute="top" secondItem="u2c-4D-Omt" secondAttribute="top" id="Wn7-Vz-4my"/>
-                                            <constraint firstAttribute="trailing" secondItem="ndD-xI-uUj" secondAttribute="trailing" id="rUX-P1-Oo8"/>
-                                            <constraint firstItem="ndD-xI-uUj" firstAttribute="leading" secondItem="u2c-4D-Omt" secondAttribute="leading" id="y3D-wX-QEb"/>
-                                        </constraints>
-                                    </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YrV-WY-xwg" userLabel="expenses">
-                                        <rect key="frame" x="125" y="0.0" width="125" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="187.5" height="50"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="bkg-CP-7Ay">
-                                                <rect key="frame" x="0.0" y="0.0" width="125" height="50"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="187.5" height="50"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="var" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XgZ-dC-9B5">
-                                                        <rect key="frame" x="48" y="0.0" width="29" height="25"/>
+                                                        <rect key="frame" x="79.5" y="0.0" width="29" height="25"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="expenses" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jyk-tJ-XXP">
-                                                        <rect key="frame" x="35.5" y="25" width="54" height="25"/>
+                                                        <rect key="frame" x="67" y="25" width="54" height="25"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
@@ -326,19 +315,19 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2w3-FY-ZCG" userLabel="glasses">
-                                        <rect key="frame" x="250" y="0.0" width="125" height="50"/>
+                                        <rect key="frame" x="187.5" y="0.0" width="187.5" height="50"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="B86-Zs-oag">
-                                                <rect key="frame" x="0.0" y="0.0" width="125" height="50"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="187.5" height="50"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="var" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hwv-xI-Hy6">
-                                                        <rect key="frame" x="48" y="0.0" width="29" height="25"/>
+                                                        <rect key="frame" x="79.5" y="0.0" width="29" height="25"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="glasses" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JIe-0G-sqb">
-                                                        <rect key="frame" x="41" y="25" width="43" height="25"/>
+                                                        <rect key="frame" x="72.5" y="25" width="43" height="25"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
@@ -520,10 +509,13 @@
                     </view>
                     <connections>
                         <outlet property="barCharts" destination="ugx-no-ah7" id="KJW-y2-Ioz"/>
-                        <outlet property="feedBarItem" destination="uOU-nu-zLW" id="M06-0x-Xhw"/>
-                        <outlet property="partyBarItem" destination="L61-ps-iOp" id="g9P-Cs-ruQ"/>
-                        <outlet property="profileBarItem" destination="xTW-bv-0af" id="5bu-kw-5fb"/>
-                        <outlet property="tabBar" destination="zP4-gx-JD1" id="Vnq-Yj-gHg"/>
+                        <outlet property="drinksOfTheMonthLabel" destination="Hwv-xI-Hy6" id="En6-Sf-n7d"/>
+                        <outlet property="feedBarItem" destination="uOU-nu-zLW" id="42U-AY-acT"/>
+                        <outlet property="litersOfTheMonthLabel" destination="I2N-Rg-Vnh" id="ece-RY-jc2"/>
+                        <outlet property="partyBarItem" destination="L61-ps-iOp" id="6ju-No-KgB"/>
+                        <outlet property="priceOfTheMonthLabel" destination="XgZ-dC-9B5" id="djG-lk-zZ3"/>
+                        <outlet property="profileBarItem" destination="xTW-bv-0af" id="rLH-ei-Zii"/>
+                        <outlet property="tabBar" destination="zP4-gx-JD1" id="B0L-i5-c8h"/>
                         <outlet property="tableView" destination="UF9-Qx-ZnB" id="6LW-Cy-IVY"/>
                     </connections>
                 </viewController>
@@ -807,10 +799,10 @@ Call your bank and ask to block it.</string>
             </objects>
             <point key="canvasLocation" x="7436" y="17"/>
         </scene>
-        <!--Profile Controller-->
+        <!--Profile View Controller-->
         <scene sceneID="hif-rt-z9F">
             <objects>
-                <viewController storyboardIdentifier="ProfileEditController" id="MLR-2W-oab" customClass="ProfileController" customModule="IOS_EQ04" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileViewController" id="MLR-2W-oab" customClass="ProfileViewController" customModule="IOS_EQ04" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sVt-wj-4XE" customClass="HomeView" customModule="IOS_EQ04" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -826,16 +818,6 @@ Call your bank and ask to block it.</string>
                                     <navigationItem title="MY" id="lHf-PW-IKf"/>
                                 </items>
                             </navigationBar>
-                            <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z7G-th-hwf">
-                                <rect key="frame" x="0.0" y="618" width="375" height="49"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <items>
-                                    <tabBarItem systemItem="favorites" id="Mmn-DT-lZM"/>
-                                    <tabBarItem systemItem="favorites" id="DVg-QV-14d"/>
-                                    <tabBarItem title="" image="IQButtonBarArrowRight.png" id="5V6-3b-0nQ"/>
-                                </items>
-                            </tabBar>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_picture" translatesAutoresizingMaskIntoConstraints="NO" id="dYV-s1-4mi">
                                 <rect key="frame" x="30" y="94" width="80" height="80"/>
                                 <constraints>
@@ -953,6 +935,15 @@ Call your bank and ask to block it.</string>
                                 <rect key="frame" x="280" y="450" width="51" height="31"/>
                                 <color key="onTintColor" red="0.97254901959999995" green="0.59999999999999998" blue="0.20392156859999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </switch>
+                            <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z23-hI-Eni">
+                                <rect key="frame" x="0.0" y="618" width="375" height="49"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <items>
+                                    <tabBarItem title="My Data" image="feed" id="db0-IE-cXT"/>
+                                    <tabBarItem title="My Party" image="party" id="jBe-m2-TES"/>
+                                    <tabBarItem title="My Profile" image="profile" id="Fjr-mD-fQs"/>
+                                </items>
+                            </tabBar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -962,6 +953,7 @@ Call your bank and ask to block it.</string>
                             <constraint firstItem="1iL-pb-g1F" firstAttribute="trailing" secondItem="aDI-OD-gpY" secondAttribute="trailing" id="6vq-5m-UIz"/>
                             <constraint firstItem="aDI-OD-gpY" firstAttribute="trailing" secondItem="M5d-Jd-da6" secondAttribute="trailing" constant="35" id="82C-b0-4YQ"/>
                             <constraint firstItem="URn-Tu-DW6" firstAttribute="top" secondItem="ZPe-ks-BW4" secondAttribute="bottom" constant="19" id="94H-5J-2EX"/>
+                            <constraint firstItem="Z23-hI-Eni" firstAttribute="leading" secondItem="aDI-OD-gpY" secondAttribute="leading" id="9jR-QZ-N4a"/>
                             <constraint firstItem="dYV-s1-4mi" firstAttribute="top" secondItem="1iL-pb-g1F" secondAttribute="bottom" constant="30" id="9ry-5M-ar6"/>
                             <constraint firstItem="pcZ-8B-b6J" firstAttribute="leading" secondItem="aDI-OD-gpY" secondAttribute="leading" constant="46" id="9zg-oE-mGf"/>
                             <constraint firstItem="4Bh-q6-hUR" firstAttribute="leading" secondItem="nUA-zt-iNR" secondAttribute="trailing" constant="57" id="BGe-GJ-Mrx"/>
@@ -974,6 +966,7 @@ Call your bank and ask to block it.</string>
                             <constraint firstItem="KOy-Km-QhR" firstAttribute="leading" secondItem="aDI-OD-gpY" secondAttribute="leading" constant="294" id="L6g-qR-Uum"/>
                             <constraint firstItem="Quh-wm-d7J" firstAttribute="leading" secondItem="aDI-OD-gpY" secondAttribute="leading" constant="46" id="L8K-a9-9mc"/>
                             <constraint firstItem="hsx-7B-rWd" firstAttribute="top" secondItem="URn-Tu-DW6" secondAttribute="bottom" constant="19" id="R7Q-mf-Hrb"/>
+                            <constraint firstItem="aDI-OD-gpY" firstAttribute="bottom" secondItem="Z23-hI-Eni" secondAttribute="bottom" id="SKK-4W-XFV"/>
                             <constraint firstItem="ZPe-ks-BW4" firstAttribute="leading" secondItem="IQz-Hy-DPm" secondAttribute="trailing" constant="74" id="SXw-OP-9M9"/>
                             <constraint firstItem="aDI-OD-gpY" firstAttribute="trailing" secondItem="ZPe-ks-BW4" secondAttribute="trailing" constant="57" id="Tj3-k7-Soh"/>
                             <constraint firstItem="YK7-zB-4Nm" firstAttribute="leading" secondItem="aDI-OD-gpY" secondAttribute="leading" constant="46" id="UjG-rk-jGQ"/>
@@ -998,29 +991,32 @@ Call your bank and ask to block it.</string>
                             <constraint firstItem="nUA-zt-iNR" firstAttribute="top" secondItem="pcZ-8B-b6J" secondAttribute="bottom" constant="19" id="vRZ-uj-cLG"/>
                             <constraint firstItem="7kZ-0U-9UQ" firstAttribute="leading" secondItem="aDI-OD-gpY" secondAttribute="leading" constant="46" id="wRz-go-IDh"/>
                             <constraint firstItem="KOy-Km-QhR" firstAttribute="top" secondItem="QJE-ZD-xgR" secondAttribute="bottom" constant="25.5" id="wrt-dz-aRD"/>
+                            <constraint firstItem="Z23-hI-Eni" firstAttribute="trailing" secondItem="aDI-OD-gpY" secondAttribute="trailing" id="xCO-mV-7jZ"/>
                             <constraint firstItem="Quh-wm-d7J" firstAttribute="top" secondItem="IQz-Hy-DPm" secondAttribute="bottom" constant="19" id="xMw-BY-Imn"/>
                             <constraint firstItem="7kZ-0U-9UQ" firstAttribute="top" secondItem="YK7-zB-4Nm" secondAttribute="bottom" constant="5" id="z4o-Vs-vf9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="aDI-OD-gpY"/>
                     </view>
                     <connections>
-                        <outlet property="addDrinkItem" destination="Mmn-DT-lZM" id="4zx-J3-BYZ"/>
                         <outlet property="adressProfile" destination="4Bh-q6-hUR" id="jHj-bc-ewc"/>
                         <outlet property="ageProfile" destination="ZPe-ks-BW4" id="5Az-6h-myh"/>
                         <outlet property="consumptionDescription" destination="7kZ-0U-9UQ" id="2V6-fj-6jz"/>
+                        <outlet property="feedBarItem" destination="db0-IE-cXT" id="51s-J6-yeA"/>
                         <outlet property="firstNameProfile" destination="TL2-rE-HyE" id="Jst-N5-f99"/>
                         <outlet property="heightProfile" destination="hsx-7B-rWd" id="sik-nq-ozW"/>
                         <outlet property="localDescription" destination="QJE-ZD-xgR" id="PrM-T5-GO2"/>
                         <outlet property="localProfile" destination="waS-cp-yW2" id="bcf-dN-urF"/>
                         <outlet property="notificationProfile" destination="YK7-zB-4Nm" id="coO-Bl-gjF"/>
-                        <outlet property="tabBar" destination="Z7G-th-hwf" id="c3q-Hp-rWu"/>
+                        <outlet property="partyBarItem" destination="jBe-m2-TES" id="uAA-5s-pzx"/>
+                        <outlet property="profileBarItem" destination="Fjr-mD-fQs" id="EVG-UP-8cW"/>
+                        <outlet property="tabBar" destination="Z23-hI-Eni" id="UZg-rO-xBj"/>
                         <outlet property="weightProfile" destination="URn-Tu-DW6" id="Crh-ka-wy7"/>
                         <segue destination="z3p-Ms-rUf" kind="showDetail" identifier="ProfileSegue" id="jSM-cy-Gdj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GrX-RN-HEk" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1409" y="1666"/>
+            <point key="canvasLocation" x="1408.8" y="1665.5172413793105"/>
         </scene>
         <!--Edit Controller-->
         <scene sceneID="bNc-wh-uab">
@@ -1230,20 +1226,18 @@ Call your bank and ask to block it.</string>
         </scene>
     </scenes>
     <resources>
-        <image name="IQButtonBarArrowRight.png" width="12" height="21"/>
         <image name="cardStolen" width="268" height="199"/>
         <image name="credit-card" width="33" height="25"/>
         <image name="emergency" width="201" height="211"/>
         <image name="feed" width="25" height="23"/>
         <image name="first-aid" width="33" height="28"/>
         <image name="goHome" width="275" height="139"/>
-        <image name="map" width="31" height="33"/>
         <image name="party" width="27" height="27"/>
         <image name="plusIcon" width="16" height="16"/>
         <image name="profile" width="24" height="23"/>
         <image name="profile_picture" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="TzQ-mm-ZG9"/>
+        <segue reference="jSM-cy-Gdj"/>
     </inferredMetricsTieBreakers>
 </document>

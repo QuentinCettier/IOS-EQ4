@@ -11,6 +11,7 @@
 		3A6C7E8E21AF8150008A0CFF /* CreditCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6C7E8D21AF8150008A0CFF /* CreditCardViewController.swift */; };
 		3A6C7E9021AF8DC6008A0CFF /* EditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6C7E8F21AF8DC6008A0CFF /* EditController.swift */; };
 		3A6C7E9221AF90FF008A0CFF /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6C7E9121AF90FF008A0CFF /* TabBar.swift */; };
+		3A6C7E9421B01AD6008A0CFF /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6C7E9321B01AD6008A0CFF /* ProfileViewController.swift */; };
 		3A706CD2219C639900A3EA20 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A706CD1219C639900A3EA20 /* GoogleService-Info.plist */; };
 		3A78A89521973EBC00FABB19 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A78A89421973EBC00FABB19 /* AppDelegate.swift */; };
 		3A78A89721973EBC00FABB19 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A78A89621973EBC00FABB19 /* ViewController.swift */; };
@@ -46,6 +47,7 @@
 		3A6C7E8D21AF8150008A0CFF /* CreditCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardViewController.swift; sourceTree = "<group>"; };
 		3A6C7E8F21AF8DC6008A0CFF /* EditController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditController.swift; sourceTree = "<group>"; };
 		3A6C7E9121AF90FF008A0CFF /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
+		3A6C7E9321B01AD6008A0CFF /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		3A706CD1219C639900A3EA20 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		3A78A89121973EBC00FABB19 /* IOS-EQ04.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "IOS-EQ04.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A78A89421973EBC00FABB19 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 				3A6C7E8B21AF7F60008A0CFF /* EmergencyViewController.swift */,
 				3A6C7E8D21AF8150008A0CFF /* CreditCardViewController.swift */,
 				3A6C7E8F21AF8DC6008A0CFF /* EditController.swift */,
+				3A6C7E9321B01AD6008A0CFF /* ProfileViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -385,6 +388,7 @@
 				3AFF4CD821AEF104007F9DBB /* PartyTableViewCell.swift in Sources */,
 				3A78A8BB219A3C6C00FABB19 /* SliderHomeController.swift in Sources */,
 				3AD7759C21A4184500078A00 /* AddDrinkController.swift in Sources */,
+				3A6C7E9421B01AD6008A0CFF /* ProfileViewController.swift in Sources */,
 				3A78A8B72198994900FABB19 /* PeopleModel.swift in Sources */,
 				3AFF4CCC21AC9453007F9DBB /* PriceCollectionViewCell.swift in Sources */,
 				3A78A8AE21973F6500FABB19 /* HomeController.swift in Sources */,

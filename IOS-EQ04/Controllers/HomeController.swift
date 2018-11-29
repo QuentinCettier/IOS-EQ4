@@ -1,4 +1,3 @@
-//
 //  HomeController.swift
 //  IOS-EQ04
 //
@@ -11,45 +10,40 @@ import FirebaseAuth
 import FirebaseFirestore
 import CoreCharts
 
+let db = Firestore.firestore()
+
 
 class HomeController: UIViewController, UITabBarDelegate, CoreChartViewDataSource {
+    
+    
     @IBOutlet weak var tabBar: UITabBar!
-    @IBOutlet weak var feedBarItem: UITabBarItem!
-    @IBOutlet weak var partyBarItem: UITabBarItem!
+    
     @IBOutlet weak var profileBarItem: UITabBarItem!
+    @IBOutlet weak var partyBarItem: UITabBarItem!
+    @IBOutlet weak var feedBarItem: UITabBarItem!
+    
+    @IBOutlet weak var litersOfTheMonthLabel: UILabel!
+    @IBOutlet weak var priceOfTheMonthLabel: UILabel!
+    @IBOutlet weak var drinksOfTheMonthLabel: UILabel!
     
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var barCharts: VCoreBarChart!
-//    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet weak var addDrinkItem: UITabBarItem!
     
-    let segmentedControl: UISegmentedControl = {
-        let items = ["Alcohol", "Expenses", "Drinks"]
-        let sControl = UISegmentedControl(items: items)
-        sControl.frame = CGRect(x:0, y:0, width: 0, height:0)
-        
-        sControl.selectedSegmentIndex = 0
-        sControl.layer.cornerRadius = 5
-        sControl.backgroundColor = .white
-        sControl.tintColor = UIColor(hex:"F89934")
-        sControl.layer.borderWidth = 1
-        sControl.layer.borderColor = UIColor(hex:"FFFFFF").cgColor
-        
-        sControl.addTarget(self, action: #selector(changeColor), for: .valueChanged)
-
-        return sControl
-    }()
-
     var parties: [Party] = []
-    
-    
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        var count: Int = 0
+        
+        //        let userEmail = Auth.auth().currentUser?.email
+        
         let db = Firestore.firestore()
-        db.collection("users").whereField("email", isEqualTo: Auth.auth().currentUser?.email )
+        var drinks = [String]()
+        var sizeDrinks = [String]()
+        var priceDrinks = [String]()
+        db.collection("users").whereField("email", isEqualTo: "qcettier@gmail.com" )
             .getDocuments { (querySnapshot, err) in
                 if let err = err {
                     print("Error getting documents: \(err)")
@@ -61,24 +55,28 @@ class HomeController: UIViewController, UITabBarDelegate, CoreChartViewDataSourc
                             } else {
                                 for doc in query!.documents {
                                     let usersDrinks = db.collection("users").document(document.documentID).collection("drinks")
-                                    usersDrinks
-                                    count += 1
-                                    
+                                    if let dateDrink = doc.data()["date"] as? String {
+                                        drinks.insert(dateDrink, at: 0)
+                                    }
+                                    if let sizeDrink = doc.data()["drinkSize"] as? String {
+                                        sizeDrinks.insert(sizeDrink, at: 0)
+                                    }
+                                    if let priceDrink = doc.data()["drinkPrice"] as? String {
+                                        priceDrinks.insert(priceDrink, at: 0)
+                                    }
                                 }
+                                self.calculateDrinksPerDay(drinks)
+                                self.calculateLitersPerMonth(drinks, sizeDrinks)
+                                self.calculatePricePerMonth(drinks, priceDrinks)
                             }
-
+                            
                         })
-                    
+                        
                     }
                 }
         }
-
         
         
-        
-        self.view.addSubview(segmentedControl)
-
-        setupSC()
         tabBar.delegate = self
         
         parties = createArray()
@@ -95,18 +93,130 @@ class HomeController: UIViewController, UITabBarDelegate, CoreChartViewDataSourc
         barCharts.displayConfig.valueFontSize = 16
     }
     
-    @objc func changeColor(sender: UISegmentedControl) {
-        switch sender.selectedSegmentIndex {
-        case 1:
-            print("Green")
-        case 2:
-            print("Blue")
-        case 3:
-            print("Blue")
-        default:
-            print("Purple")
+    private func calculatePricePerMonth( _ drinks: Array<String>, _ priceDrinks: Array<String>) {
+        let currentDate = Date()
+        
+        let daysToAdd = -30
+        var dateComponent = DateComponents()
+        dateComponent.day = daysToAdd
+        
+        var priceOfTheMonth = Float(0)
+        var index = 0
+        for el in drinks {
+            let dateString = el
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+            let date = dateFormatter.date(from: dateString)!
+            
+            let oneMonthAgo = Calendar.current.date(byAdding: dateComponent, to: currentDate)
+            
+            if date > oneMonthAgo! {
+                var newPriceDrink = priceDrinks[index]
+                priceOfTheMonth += Float(newPriceDrink)!
+            }
+            index += 1
         }
-       
+        priceOfTheMonthLabel.text = "\(priceOfTheMonth)€"
+        drinksOfTheMonthLabel.text = "\(index)"
+    }
+    
+    private func calculateLitersPerMonth( _ drinks: Array<String>, _ sizeDrinks: Array<String>) {
+        let currentDate = Date()
+        
+        let daysToAdd = -30
+        var dateComponent = DateComponents()
+        dateComponent.day = daysToAdd
+        
+        var shots = 0
+        var verres = 0
+        var pintes = 0
+        var index = 0
+        for el in drinks {
+            let dateString = el
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+            let date = dateFormatter.date(from: dateString)!
+            
+            let oneMonthAgo = Calendar.current.date(byAdding: dateComponent, to: currentDate)
+            
+            if date > oneMonthAgo! {
+                if sizeDrinks[index] == "shot" {
+                    shots += 1
+                } else if sizeDrinks[index] == "verre" {
+                    verres += 1
+                } else if sizeDrinks[index] == "pinte" {
+                    pintes = 0
+                }
+            }
+            index += 1
+        }
+        
+        print(shots, verres, pintes)
+        var result = (Double(shots) * 0.04) + (Double(verres) * 0.25) + (Double(pintes) * 0.5)
+        var resultRounded = Double(round(1000*result)/1000)
+        litersOfTheMonthLabel.text = "\(resultRounded) L. of Alcohol"
+        
+    }
+    
+    private func calculateDrinksPerDay(_ drinks: Array<String>) {
+        // get the date of a week ago
+        let daysToAdd = -7
+        let currentDate = Date()
+        var dateComponent = DateComponents()
+        dateComponent.day = daysToAdd
+        
+        
+        let cal = Calendar.current
+        var date = cal.startOfDay(for: Date())
+        var days = [Int]()
+        for i in 1 ... 7 {
+            let day = cal.component(.day, from: date)
+            days.append(day)
+            date = cal.date(byAdding: .day, value: -1, to: date)!
+        }
+        
+        var day1 = 0
+        var day2 = 0
+        var day3 = 0
+        var day4 = 0
+        var day5 = 0
+        var day6 = 0
+        var day7 = 0
+        
+        for el in drinks {
+            let dateString = el
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+            let date = dateFormatter.date(from: dateString)!
+            
+            let oneWeekAgo = Calendar.current.date(byAdding: dateComponent, to: currentDate)
+            
+            if date > oneWeekAgo! {
+                let cal = Calendar.current
+                let dateDay = cal.dateComponents([ .day ], from: date)
+                
+                switch dateDay.day {
+                case days[6]:
+                    day1 += 1
+                case days[5]:
+                    day2 += 1
+                case days[4]:
+                    day3 += 1
+                case days[3]:
+                    day4 += 1
+                case days[2]:
+                    day5 += 1
+                case days[1]:
+                    day6 += 1
+                case days[0]:
+                    day7 += 1
+                default:
+                    print("default")
+                }
+            }
+        }
+        let drinksofTheWeek = [day1, day2, day3, day4, day5, day6, day7]
     }
     
     func loadCoreChartData() -> [CoreChartEntry] {
@@ -114,7 +224,7 @@ class HomeController: UIViewController, UITabBarDelegate, CoreChartViewDataSourc
         
         let days = ["M","T","W","T", "F", "S", "S"]
         
-        let statistics = [1, 1, 3, 10, 2, 1, 5]
+        let statistics = [1, 1, 3, 1, 2, 1, 5]
         
         for index in 0..<days.count {
             
@@ -129,6 +239,7 @@ class HomeController: UIViewController, UITabBarDelegate, CoreChartViewDataSourc
         }
         return allData
     }
+    
     
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
@@ -146,21 +257,10 @@ class HomeController: UIViewController, UITabBarDelegate, CoreChartViewDataSourc
         } else if item == profileBarItem {
             
             let myStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let PartyViewController = myStoryboard.instantiateViewController(withIdentifier: "PartyViewController")
+            let PartyViewController = myStoryboard.instantiateViewController(withIdentifier: "ProfileViewController")
             self.present(PartyViewController, animated: false, completion: nil)
             
         }
-    }
-    
-    private func setupSC() {
-        
-        segmentedControl.translatesAutoresizingMaskIntoConstraints = false
-        barCharts.translatesAutoresizingMaskIntoConstraints = false
-        
-        segmentedControl.topAnchor.constraint(equalTo: barCharts.topAnchor, constant: -50).isActive = true
-        segmentedControl.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        segmentedControl.heightAnchor.constraint(equalToConstant: 35).isActive = true
-        segmentedControl.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 30).isActive = true
     }
     
 }

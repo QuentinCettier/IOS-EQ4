@@ -50,7 +50,7 @@ class CreditCardViewController: UIViewController, UITabBarDelegate {
         } else if item == profileBarItem {
             
             let myStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let PartyViewController = myStoryboard.instantiateViewController(withIdentifier: "PartyViewController")
+            let PartyViewController = myStoryboard.instantiateViewController(withIdentifier: "ProfileViewController")
             self.present(PartyViewController, animated: false, completion: nil)
             
         }

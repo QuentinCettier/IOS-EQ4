@@ -17,10 +17,13 @@ class PartyViewController: UIViewController, UITextFieldDelegate , UIScrollViewD
     
     @IBOutlet weak var drinkContainer: UIView!
     
+    @IBOutlet weak var drinksLabel: UILabel!
+    @IBOutlet weak var countLabel: UILabel!
+    
+    @IBOutlet weak var hideTopView: UIView!
     @IBOutlet weak var jaugeView: UIView!
     @IBOutlet weak var firstAidButton: UIButton!
     @IBOutlet weak var creditCardButton: UIButton!
-    @IBOutlet weak var mapButton: UIButton!
     
     @IBOutlet weak var profileBarItem: UITabBarItem!
     @IBOutlet weak var partyBarItem: UITabBarItem!
@@ -163,8 +166,8 @@ class PartyViewController: UIViewController, UITextFieldDelegate , UIScrollViewD
     
     let resumetextLabel: UILabel = {
         let lbl = UILabel()
-        lbl.frame = CGRect(x: 0, y: 0, width: 150, height: 80)
-        lbl.font = UIFont(name: "Poppins-Medium", size: 19.0)
+        lbl.frame = CGRect(x: 0, y: 0, width: 270, height: 150)
+        lbl.font = UIFont(name: "SF-Pro-Text-Medium", size: 13.0)
         lbl.textColor = UIColor(hex: "000000")
         lbl.textAlignment = .left
         lbl.numberOfLines = 0
@@ -190,23 +193,26 @@ class PartyViewController: UIViewController, UITextFieldDelegate , UIScrollViewD
     let db = Firestore.firestore()
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         
         self.hideKeyboardWhenTappedAround()
-        
+    
         drinkContainer.layer.cornerRadius = 24
         
         firstAidButton.layer.cornerRadius = 25
         creditCardButton.layer.cornerRadius = 25
-        mapButton.layer.cornerRadius = 25
         tabBar.delegate = self
         jaugeView.backgroundColor = UIColor(hex:"000000")
         jaugeView.layer.borderWidth = 1
         jaugeView.layer.borderColor = UIColor(hex:"FFFFFF").cgColor
         
-        
         jaugechildrenView.frame.origin.y = jaugeView.frame.height * 0.9
+        
+        
+        self.drinksLabel.textColor = .white
+        self.drinksLabel.frame = CGRect(x:0, y:0, width: 50, height: 14)
+        self.drinksLabel.font = UIFont(name: "SFProText-Regular", size: 19.0)
+        self.drinksLabel.numberOfLines = 0
         
         
         view.addSubview(AddDrinkButton)
@@ -220,7 +226,7 @@ class PartyViewController: UIViewController, UITextFieldDelegate , UIScrollViewD
         view.bringSubviewToFront(tabBar)
         modalView.addSubview(scrollView)
         modalView.addSubview(pageControl)
-//        view.bringSubviewToFront(jaugeView)
+        view.bringSubviewToFront(hideTopView)
 
         scrollView.delegate = self
         let gesture = UITapGestureRecognizer(target: self, action: #selector(addd))
@@ -253,7 +259,7 @@ class PartyViewController: UIViewController, UITextFieldDelegate , UIScrollViewD
         UIView.animate(withDuration: 0.3, animations: {
             self.creditCardButton.alpha = 0
             self.firstAidButton.alpha = 0
-            self.mapButton.alpha = 0
+            self.hideTopView.alpha = 0
             self.modalblurView.alpha = 0.13
             self.modalView.alpha = 1
         })
@@ -456,7 +462,7 @@ class PartyViewController: UIViewController, UITextFieldDelegate , UIScrollViewD
                 scrollView.addSubview(resumetextLabel)
                 
                 resumetextLabel.frame.origin.x = scrollView.frame.size.width * CGFloat(index)
-                resumetextLabel.frame.origin.y = scrollView.frame.size.height / 2
+                resumetextLabel.frame.origin.y = scrollView.frame.size.height * 0.25
                 
                 scrollView.translatesAutoresizingMaskIntoConstraints = false
                 
@@ -517,7 +523,7 @@ class PartyViewController: UIViewController, UITextFieldDelegate , UIScrollViewD
                 self.scrollView.contentOffset = CGPoint(x: 764,y:0)
                 self.pageControl.currentPage = 4
                 
-                self.resumetextLabel.text = "Vous avez commandé un(e) \(self.img_choosed) de \(self.drink_choosed) pour un montant de \(self.price_choose)"
+                self.resumetextLabel.text = "Vous avez commandé un(e) \(self.img_choosed) de \(self.drink_choosed) pour un montant de \(self.price_choose) euros"
             }
             
 
@@ -527,9 +533,9 @@ class PartyViewController: UIViewController, UITextFieldDelegate , UIScrollViewD
         UIView.animate(withDuration: 0.3, animations: {
             self.modalblurView.alpha = 0
             self.modalView.alpha = 0
+            self.hideTopView.alpha = 1
             self.creditCardButton.alpha = 1
             self.firstAidButton.alpha = 1
-            self.mapButton.alpha = 1
             self.scrollView.contentOffset = CGPoint(x: 0,y:0)
             self.pageControl.currentPage = 1
         })
@@ -566,6 +572,9 @@ class PartyViewController: UIViewController, UITextFieldDelegate , UIScrollViewD
         UIView.animate(withDuration: 0.3, animations: {
             self.modalblurView.alpha = 0
             self.modalView.alpha = 0
+            self.hideTopView.alpha = 1
+            self.creditCardButton.alpha = 1
+            self.firstAidButton.alpha = 1
             
         })
         
@@ -587,7 +596,7 @@ class PartyViewController: UIViewController, UITextFieldDelegate , UIScrollViewD
                 }
         }
         
-        UIView.animate(withDuration: 5, animations: {
+        UIView.animate(withDuration: 0.9, animations: {
             self.jaugechildrenView.frame = CGRect(x:0, y: self.jaugechildrenView.frame.origin.y - 20, width:200, height: self.jaugechildrenView.frame.height + 20)
         })
     }
@@ -625,6 +634,12 @@ class PartyViewController: UIViewController, UITextFieldDelegate , UIScrollViewD
                                 
                                 self.animate(count: count)
                                 self.notification(count: count)
+                                self.countLabel.text = "\(count)"
+                                self.drinksLabel.text = "drinks"
+                                self.countLabel.textColor = .white
+                                self.countLabel.frame = CGRect(x:0, y:0, width: 50, height: 100)
+                                self.countLabel.font = UIFont(name: "SFProText-Regular", size: 40.0)
+                                self.countLabel.numberOfLines = 0
                             }
                             
                         })
@@ -648,31 +663,33 @@ class PartyViewController: UIViewController, UITextFieldDelegate , UIScrollViewD
     }
     
     func notification(count: Int) {
-        
-//        if(count >= 5) {
-//            let center = UNUserNotificationCenter.current()
-//            // Request permission to display alerts and play sounds.
-//            center.requestAuthorization(options: [.alert, .sound])
-//            { (granted, error) in
-//                // Enable or disable features based on authorization.
-//            }
-//            print("notification")
-//            //Create a notification
-//            let content = UNMutableNotificationContent()
-//
-//            content.title = "Tu es un vrai malade"
-//            content.body = "Penses à boire de l'eau"
-//            content.sound = UNNotificationSound.default
-//
-//            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 2, repeats: false)
-//
-//            let request  = UNNotificationRequest(identifier: "notification", content: content, trigger: trigger)
-//
-//            UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-//        }
+        print(count)
+        if(count > 5) {
+            let center = UNUserNotificationCenter.current()
+            // Request permission to display alerts and play sounds.
+            center.requestAuthorization(options: [.alert, .sound])
+            { (granted, error) in
+                // Enable or disable features based on authorization.
+            }
+            print("notification")
+            //Create a notification
+            let content = UNMutableNotificationContent()
+
+            content.title = "Tu es un vrai malade"
+            content.body = "Penses à boire de l'eau"
+            content.sound = UNNotificationSound.default
+
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 2, repeats: false)
+
+            let request  = UNNotificationRequest(identifier: "notification", content: content, trigger: trigger)
+
+            UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+        }
         
         
     }
+    
+    
     func setupPageControl() {
         pageControl.translatesAutoresizingMaskIntoConstraints = false
         
@@ -849,7 +866,7 @@ class PartyViewController: UIViewController, UITextFieldDelegate , UIScrollViewD
         } else if item == profileBarItem {
             
             let myStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let PartyViewController = myStoryboard.instantiateViewController(withIdentifier: "PartyViewController")
+            let PartyViewController = myStoryboard.instantiateViewController(withIdentifier: "ProfileViewController")
             self.present(PartyViewController, animated: false, completion: nil)
             
         }
