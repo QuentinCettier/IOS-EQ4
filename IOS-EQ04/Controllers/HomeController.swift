@@ -16,6 +16,12 @@ let db = Firestore.firestore()
 
 class HomeController: UIViewController, UITabBarDelegate, CoreChartViewDataSource {
 
+    
+    @IBOutlet weak var litersOfTheMonthLabel: UILabel!
+    @IBOutlet weak var priceOfTheMonthLabel: UILabel!
+    @IBOutlet weak var drinksOfTheMonthLabel: UILabel!
+    
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var barCharts: VCoreBarChart!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
@@ -32,6 +38,7 @@ class HomeController: UIViewController, UITabBarDelegate, CoreChartViewDataSourc
         let db = Firestore.firestore()
         var drinks = [String]()
         var sizeDrinks = [String]()
+        var priceDrinks = [String]()
         db.collection("users").whereField("email", isEqualTo: "qcettier@gmail.com" )
             .getDocuments { (querySnapshot, err) in
                 if let err = err {
@@ -50,9 +57,13 @@ class HomeController: UIViewController, UITabBarDelegate, CoreChartViewDataSourc
                                     if let sizeDrink = doc.data()["drinkSize"] as? String {
                                         sizeDrinks.insert(sizeDrink, at: 0)
                                     }
+                                    if let priceDrink = doc.data()["drinkPrice"] as? String {
+                                        priceDrinks.insert(priceDrink, at: 0)
+                                    }
                                 }
                                 self.calculateDrinksPerDay(drinks)
-                                self.calculateDrinksPerMonth(drinks, sizeDrinks)
+                                self.calculateLitersPerMonth(drinks, sizeDrinks)
+                                self.calculatePricePerMonth(drinks, priceDrinks)
                             }
                             
                         })
@@ -78,7 +89,34 @@ class HomeController: UIViewController, UITabBarDelegate, CoreChartViewDataSourc
         barCharts.displayConfig.valueFontSize = 16
     }
     
-    private func calculateDrinksPerMonth( _ drinks: Array<String>, _ sizeDrinks: Array<String>) {
+    private func calculatePricePerMonth( _ drinks: Array<String>, _ priceDrinks: Array<String>) {
+        let currentDate = Date()
+        
+        let daysToAdd = -30
+        var dateComponent = DateComponents()
+        dateComponent.day = daysToAdd
+        
+        var priceOfTheMonth = Float(0)
+        var index = 0
+        for el in drinks {
+            let dateString = el
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+            let date = dateFormatter.date(from: dateString)!
+            
+            let oneMonthAgo = Calendar.current.date(byAdding: dateComponent, to: currentDate)
+            
+            if date > oneMonthAgo! {
+                var newPriceDrink = priceDrinks[index]
+                priceOfTheMonth += Float(newPriceDrink)!
+            }
+            index += 1
+        }
+        priceOfTheMonthLabel.text = "\(priceOfTheMonth)€"
+        drinksOfTheMonthLabel.text = "\(index)"
+    }
+    
+    private func calculateLitersPerMonth( _ drinks: Array<String>, _ sizeDrinks: Array<String>) {
         let currentDate = Date()
         
         let daysToAdd = -30
@@ -109,8 +147,10 @@ class HomeController: UIViewController, UITabBarDelegate, CoreChartViewDataSourc
             index += 1
         }
         
+        print(shots, verres, pintes)
         var result = (Double(shots) * 0.04) + (Double(verres) * 0.25) + (Double(pintes) * 0.5)
-        print(Double(round(1000*result)/1000))
+        var resultRounded = Double(round(1000*result)/1000)
+        litersOfTheMonthLabel.text = "\(resultRounded) L. of Alcohol"
         
     }
     
@@ -173,7 +213,6 @@ class HomeController: UIViewController, UITabBarDelegate, CoreChartViewDataSourc
             }
         }
         let drinksofTheWeek = [day1, day2, day3, day4, day5, day6, day7]
-        print(drinksofTheWeek)
     }
     
     func loadCoreChartData() -> [CoreChartEntry] {
