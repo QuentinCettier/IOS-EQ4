@@ -11,6 +11,8 @@ import FirebaseAuth
 import FirebaseFirestore
 import CoreCharts
 
+let db = Firestore.firestore()
+
 
 class HomeController: UIViewController, UITabBarDelegate, CoreChartViewDataSource {
 
@@ -24,7 +26,37 @@ class HomeController: UIViewController, UITabBarDelegate, CoreChartViewDataSourc
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+//        let userEmail = Auth.auth().currentUser?.email
+        
+        let db = Firestore.firestore()
+        var drinks = [String]()
+        db.collection("users").whereField("email", isEqualTo: "qcettier@gmail.com" )
+            .getDocuments { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    for document in querySnapshot!.documents {
+                        db.collection("users").document(document.documentID).collection("drinks").getDocuments(completion: { (query, err) in
+                            if let err = err {
+                                print("Error getting documents: \(err)")
+                            } else {
+                                  for doc in query!.documents {
+                                    let usersDrinks = db.collection("users").document(document.documentID).collection("drinks")
+                                    if let dateDrink = doc.data()["date"] as? String {
+                                        drinks.insert(dateDrink, at: 0)
+                                    }
+                                }
+                                self.calculateDrinksPerDay(drinks)
+                            }
+                            
+                        })
+                        
+                    }
+                }
+        }
+        
+        
         tabBar.delegate = self
         
         parties = createArray()
@@ -39,6 +71,70 @@ class HomeController: UIViewController, UITabBarDelegate, CoreChartViewDataSourc
         barCharts.displayConfig.barSpace = 12
         barCharts.displayConfig.titleFontSize = 16
         barCharts.displayConfig.valueFontSize = 16
+    }
+    
+    private func calculateDrinksPerDay(_ drinks: Array<String>) {
+        // get the date of a week ago
+        let daysToAdd = -7
+        let currentDate = Date()
+        var dateComponent = DateComponents()
+        dateComponent.day = daysToAdd
+        
+        
+        let cal = Calendar.current
+        var date = cal.startOfDay(for: Date())
+        var days = [Int]()
+        for i in 1 ... 7 {
+            let day = cal.component(.day, from: date)
+            days.append(day)
+            date = cal.date(byAdding: .day, value: -1, to: date)!
+        }
+        print(days)
+        
+        
+        var day1 = 0
+        var day2 = 0
+        var day3 = 0
+        var day4 = 0
+        var day5 = 0
+        var day6 = 0
+        var day7 = 0
+        
+        for el in drinks {
+            let dateString = el
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+            let date = dateFormatter.date(from: dateString)!
+            
+            let oneWeekAgo = Calendar.current.date(byAdding: dateComponent, to: currentDate)
+            
+            if date > oneWeekAgo! {
+                let cal = Calendar.current
+                let dateDay = cal.dateComponents([ .day ], from: date)
+                
+                switch dateDay.day {
+                case days[6]:
+                    day1 += 1
+                case days[5]:
+                    day2 += 1
+                case days[4]:
+                    day3 += 1
+                case days[3]:
+                    day4 += 1
+                case days[2]:
+                    day5 += 1
+                case days[1]:
+                    day6 += 1
+                case days[0]:
+                    day7 += 1
+                default:
+                    print("default")
+                }
+            }
+        }
+        let drinksofTheWeek = [day1, day2, day3, day4, day5, day6, day7]
+        print(drinksofTheWeek)
     }
     
     func loadCoreChartData() -> [CoreChartEntry] {
