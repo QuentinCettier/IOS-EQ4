@@ -31,6 +31,7 @@ class HomeController: UIViewController, UITabBarDelegate, CoreChartViewDataSourc
         
         let db = Firestore.firestore()
         var drinks = [String]()
+        var sizeDrinks = [String]()
         db.collection("users").whereField("email", isEqualTo: "qcettier@gmail.com" )
             .getDocuments { (querySnapshot, err) in
                 if let err = err {
@@ -46,8 +47,12 @@ class HomeController: UIViewController, UITabBarDelegate, CoreChartViewDataSourc
                                     if let dateDrink = doc.data()["date"] as? String {
                                         drinks.insert(dateDrink, at: 0)
                                     }
+                                    if let sizeDrink = doc.data()["drinkSize"] as? String {
+                                        sizeDrinks.insert(sizeDrink, at: 0)
+                                    }
                                 }
                                 self.calculateDrinksPerDay(drinks)
+                                self.calculateDrinksPerMonth(drinks, sizeDrinks)
                             }
                             
                         })
@@ -73,6 +78,42 @@ class HomeController: UIViewController, UITabBarDelegate, CoreChartViewDataSourc
         barCharts.displayConfig.valueFontSize = 16
     }
     
+    private func calculateDrinksPerMonth( _ drinks: Array<String>, _ sizeDrinks: Array<String>) {
+        let currentDate = Date()
+        
+        let daysToAdd = -30
+        var dateComponent = DateComponents()
+        dateComponent.day = daysToAdd
+        
+        var shots = 0
+        var verres = 0
+        var pintes = 0
+        var index = 0
+        for el in drinks {
+            let dateString = el
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+            let date = dateFormatter.date(from: dateString)!
+            
+            let oneMonthAgo = Calendar.current.date(byAdding: dateComponent, to: currentDate)
+            
+            if date > oneMonthAgo! {
+                if sizeDrinks[index] == "shot" {
+                    shots += 1
+                } else if sizeDrinks[index] == "verre" {
+                    verres += 1
+                } else if sizeDrinks[index] == "pinte" {
+                    pintes = 0
+                }
+            }
+            index += 1
+        }
+        
+        var result = (Double(shots) * 0.04) + (Double(verres) * 0.25) + (Double(pintes) * 0.5)
+        print(Double(round(1000*result)/1000))
+        
+    }
+    
     private func calculateDrinksPerDay(_ drinks: Array<String>) {
         // get the date of a week ago
         let daysToAdd = -7
@@ -89,8 +130,6 @@ class HomeController: UIViewController, UITabBarDelegate, CoreChartViewDataSourc
             days.append(day)
             date = cal.date(byAdding: .day, value: -1, to: date)!
         }
-        print(days)
-        
         
         var day1 = 0
         var day2 = 0
