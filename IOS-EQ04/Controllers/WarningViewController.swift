@@ -84,18 +84,7 @@ class WarningViewController: UIViewController {
 //            // Enable or disable features based on authorization.
 //        }
 
-//        Create a notification
-        let content = UNMutableNotificationContent()
-
-        content.title = "CC Raphael"
-        content.body = "c bien le cours à l'HETIC"
-        content.sound = UNNotificationSound.default
-
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-
-        let request  = UNNotificationRequest(identifier: "efefn", content: content, trigger: trigger)
-
-        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+//       
 
         
         view.addSubview(titlelabel)

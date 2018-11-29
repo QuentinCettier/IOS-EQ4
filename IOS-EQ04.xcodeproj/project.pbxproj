@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A6C7E8C21AF7F60008A0CFF /* EmergencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6C7E8B21AF7F60008A0CFF /* EmergencyViewController.swift */; };
+		3A6C7E8E21AF8150008A0CFF /* CreditCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6C7E8D21AF8150008A0CFF /* CreditCardViewController.swift */; };
+		3A6C7E9021AF8DC6008A0CFF /* EditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6C7E8F21AF8DC6008A0CFF /* EditController.swift */; };
+		3A6C7E9221AF90FF008A0CFF /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6C7E9121AF90FF008A0CFF /* TabBar.swift */; };
 		3A706CD2219C639900A3EA20 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A706CD1219C639900A3EA20 /* GoogleService-Info.plist */; };
 		3A78A89521973EBC00FABB19 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A78A89421973EBC00FABB19 /* AppDelegate.swift */; };
 		3A78A89721973EBC00FABB19 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A78A89621973EBC00FABB19 /* ViewController.swift */; };
@@ -29,11 +33,19 @@
 		3AD775A021A6ED5A00078A00 /* Drink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD7759F21A6ED5800078A00 /* Drink.swift */; };
 		3AFF4CCA21A7FEBE007F9DBB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3AFF4CC921A7FEBE007F9DBB /* Assets.xcassets */; };
 		3AFF4CCC21AC9453007F9DBB /* PriceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFF4CCB21AC9453007F9DBB /* PriceCollectionViewCell.swift */; };
+		3AFF4CCE21AEEAD7007F9DBB /* PartyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFF4CCD21AEEAD7007F9DBB /* PartyViewController.swift */; };
+		3AFF4CD421AEEE35007F9DBB /* raphael.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AFF4CD221AEEE35007F9DBB /* raphael.storyboard */; };
+		3AFF4CD621AEF0B4007F9DBB /* PartyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFF4CD521AEF0B4007F9DBB /* PartyModel.swift */; };
+		3AFF4CD821AEF104007F9DBB /* PartyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFF4CD721AEF104007F9DBB /* PartyTableViewCell.swift */; };
 		67E34B978539A4CA6B12A210 /* Pods_IOS_EQ04.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97936D173A49DC10A3D0A763 /* Pods_IOS_EQ04.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		26A38B843CEA4C36132BA902 /* Pods-IOS-EQ04.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IOS-EQ04.release.xcconfig"; path = "Pods/Target Support Files/Pods-IOS-EQ04/Pods-IOS-EQ04.release.xcconfig"; sourceTree = "<group>"; };
+		3A6C7E8B21AF7F60008A0CFF /* EmergencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmergencyViewController.swift; sourceTree = "<group>"; };
+		3A6C7E8D21AF8150008A0CFF /* CreditCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardViewController.swift; sourceTree = "<group>"; };
+		3A6C7E8F21AF8DC6008A0CFF /* EditController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditController.swift; sourceTree = "<group>"; };
+		3A6C7E9121AF90FF008A0CFF /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		3A706CD1219C639900A3EA20 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		3A78A89121973EBC00FABB19 /* IOS-EQ04.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "IOS-EQ04.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A78A89421973EBC00FABB19 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -59,6 +71,10 @@
 		3AD7759F21A6ED5800078A00 /* Drink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drink.swift; sourceTree = "<group>"; };
 		3AFF4CC921A7FEBE007F9DBB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3AFF4CCB21AC9453007F9DBB /* PriceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceCollectionViewCell.swift; sourceTree = "<group>"; };
+		3AFF4CCD21AEEAD7007F9DBB /* PartyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartyViewController.swift; sourceTree = "<group>"; };
+		3AFF4CD321AEEE35007F9DBB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/raphael.storyboard; sourceTree = "<group>"; };
+		3AFF4CD521AEF0B4007F9DBB /* PartyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartyModel.swift; sourceTree = "<group>"; };
+		3AFF4CD721AEF104007F9DBB /* PartyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartyTableViewCell.swift; sourceTree = "<group>"; };
 		3B698146C5CB88BE1C4282D4 /* Pods-IOS-EQ04.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IOS-EQ04.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IOS-EQ04/Pods-IOS-EQ04.debug.xcconfig"; sourceTree = "<group>"; };
 		97936D173A49DC10A3D0A763 /* Pods_IOS_EQ04.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IOS_EQ04.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -107,6 +123,7 @@
 				3A78A89421973EBC00FABB19 /* AppDelegate.swift */,
 				3A78A89621973EBC00FABB19 /* ViewController.swift */,
 				3A78A89821973EBC00FABB19 /* Main.storyboard */,
+				3AFF4CD221AEEE35007F9DBB /* raphael.storyboard */,
 				3A78A89D21973EC000FABB19 /* LaunchScreen.storyboard */,
 				3A706CD1219C639900A3EA20 /* GoogleService-Info.plist */,
 				3A78A8A021973EC000FABB19 /* Info.plist */,
@@ -119,6 +136,7 @@
 			children = (
 				3A78A8B62198994900FABB19 /* PeopleModel.swift */,
 				3AD7759F21A6ED5800078A00 /* Drink.swift */,
+				3AFF4CD521AEF0B4007F9DBB /* PartyModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -132,6 +150,10 @@
 				3A78A8CF219C5A2200FABB19 /* LoginController.swift */,
 				3AD7759921A0CC8D00078A00 /* SignupController.swift */,
 				3AD7759B21A4184500078A00 /* AddDrinkController.swift */,
+				3AFF4CCD21AEEAD7007F9DBB /* PartyViewController.swift */,
+				3A6C7E8B21AF7F60008A0CFF /* EmergencyViewController.swift */,
+				3A6C7E8D21AF8150008A0CFF /* CreditCardViewController.swift */,
+				3A6C7E8F21AF8DC6008A0CFF /* EditController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -142,6 +164,8 @@
 				3A78A8AF2197401100FABB19 /* HomeView.swift */,
 				3AD7759D21A6B33A00078A00 /* DrinkTableViewCell.swift */,
 				3AFF4CCB21AC9453007F9DBB /* PriceCollectionViewCell.swift */,
+				3AFF4CD721AEF104007F9DBB /* PartyTableViewCell.swift */,
+				3A6C7E9121AF90FF008A0CFF /* TabBar.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -263,6 +287,7 @@
 				3A78A8C6219B130100FABB19 /* SF-Pro-Text-Medium.otf in Resources */,
 				3AFF4CCA21A7FEBE007F9DBB /* Assets.xcassets in Resources */,
 				3A78A89A21973EBC00FABB19 /* Main.storyboard in Resources */,
+				3AFF4CD421AEEE35007F9DBB /* raphael.storyboard in Resources */,
 				3A706CD2219C639900A3EA20 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -280,6 +305,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-IOS-EQ04/Pods-IOS-EQ04-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
+				"${BUILT_PRODUCTS_DIR}/CoreCharts/CoreCharts.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
@@ -297,6 +323,7 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CoreCharts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
@@ -343,21 +370,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AFF4CD621AEF0B4007F9DBB /* PartyModel.swift in Sources */,
 				3AD7759E21A6B33A00078A00 /* DrinkTableViewCell.swift in Sources */,
 				3A78A8BD219ACAD700FABB19 /* WarningViewController.swift in Sources */,
 				3A78A8B32198972500FABB19 /* Extensions.swift in Sources */,
+				3AFF4CCE21AEEAD7007F9DBB /* PartyViewController.swift in Sources */,
 				3A78A89721973EBC00FABB19 /* ViewController.swift in Sources */,
 				3A78A8B02197401100FABB19 /* HomeView.swift in Sources */,
+				3A6C7E9021AF8DC6008A0CFF /* EditController.swift in Sources */,
 				3AD7759A21A0CC8D00078A00 /* SignupController.swift in Sources */,
 				3A78A89521973EBC00FABB19 /* AppDelegate.swift in Sources */,
+				3A6C7E8E21AF8150008A0CFF /* CreditCardViewController.swift in Sources */,
 				3A78A8B92198996200FABB19 /* PeopleViewModel.swift in Sources */,
+				3AFF4CD821AEF104007F9DBB /* PartyTableViewCell.swift in Sources */,
 				3A78A8BB219A3C6C00FABB19 /* SliderHomeController.swift in Sources */,
 				3AD7759C21A4184500078A00 /* AddDrinkController.swift in Sources */,
 				3A78A8B72198994900FABB19 /* PeopleModel.swift in Sources */,
 				3AFF4CCC21AC9453007F9DBB /* PriceCollectionViewCell.swift in Sources */,
 				3A78A8AE21973F6500FABB19 /* HomeController.swift in Sources */,
 				3AD775A021A6ED5A00078A00 /* Drink.swift in Sources */,
+				3A6C7E9221AF90FF008A0CFF /* TabBar.swift in Sources */,
 				3A78A8D0219C5A2200FABB19 /* LoginController.swift in Sources */,
+				3A6C7E8C21AF7F60008A0CFF /* EmergencyViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,6 +412,14 @@
 				3A78A89E21973EC000FABB19 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		3AFF4CD221AEEE35007F9DBB /* raphael.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3AFF4CD321AEEE35007F9DBB /* Base */,
+			);
+			name = raphael.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

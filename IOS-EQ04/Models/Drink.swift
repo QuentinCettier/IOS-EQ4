@@ -18,3 +18,19 @@ struct Drink {
         self.image = dictionary["image"] as? String
     }
 }
+
+struct RegisteredDrink {
+    var date: String?
+    var drinkName: String?
+    var drinkPrice: String?
+    var drinkSize: String?
+    
+    
+    init?(dictionary: [String: Any]) {
+        
+        self.date = dictionary["date"] as? String
+        self.drinkName = dictionary["drinkName"] as? String
+        self.drinkPrice = dictionary["drinkPrice"] as? String
+        self.drinkSize = dictionary["drinkSize"] as? String
+    }
+}
